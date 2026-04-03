@@ -25,6 +25,7 @@
 .hero-description {
   font-weight: 400;
   font-size: 18px;
+  height: 145px;
 
   line-height: 1.6;
   color: #fff;
@@ -87,6 +88,7 @@
 
   .hero-description {
     max-width: 560px;
+    height: 87px;
   }
 }
 
@@ -110,6 +112,7 @@
     line-height: 1.2;
     font-weight: 700;
     font-size: 56px;
+    height: 134px;
   }
 }
 
