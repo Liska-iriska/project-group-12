@@ -5,7 +5,10 @@
 .title-furniture {
     font-weight: 700;
     font-size: 36px;
+
     line-height: 120%;
+
+
     letter-spacing: 0.01em;
 }
 
@@ -14,6 +17,9 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
+
+    line-height: 1.6;
+
 }
 
 .filter {
@@ -37,7 +43,11 @@
     height: 122px;
     font-weight: 700;
     font-size: 18px;
+
     line-height: 140%;
+=======
+    line-height: 1.4;
+
     letter-spacing: 0.01em;
     text-align: center;
     color: #fff;
@@ -109,7 +119,11 @@
 .card-title {
     font-weight: 600;
     font-size: 18px;
+
     line-height: 160%;
+=======
+    line-height: 1.6;
+
 }
 
 .card-colors {
@@ -130,7 +144,11 @@
     margin-top: 8px;
     font-weight: 600;
     font-size: 20px;
+
     line-height: 160%;
+=======
+    line-height: 1.6;
+
 }
 
 .card-btn {
@@ -149,8 +167,22 @@
 
     font-weight: 500;
     font-size: 16px;
+
     line-height: 160%;
     color: #080C09;
+}
+
+
+    line-height: 1.6;
+    color: #080C09;
+}
+
+.card-btn:hover,
+.card-btn:focus {
+    box-shadow: 0 1px 2px 0 rgba(8, 12, 9, 0.05), inset 0 -2px 1px 0 rgba(8, 12, 9, 0.05), inset 0 0 0 1px rgba(8, 12, 9, 0.05);
+    background: rgba(8, 12, 9, 0.05);
+    opacity: 0.5;
+    outline: none;
 }
 
 .more-btn {
@@ -167,5 +199,61 @@
         inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
         inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
     background: rgba(107, 6, 9, 1);
-    color: #fff;
+    color: #fff;<<<<<<< HEAD
+
+}
+
+.more-btn:focus, 
+.more-btn:hover {
+    box-shadow: 0 1px 2px 0 rgba(8, 12, 9, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(8, 12, 9, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+        background: #6B0609;
+        opacity: 0.5;
+    outline: none;
+}
+
+@media only screen and (min-width: 769px) {
+    .filter-list {
+        gap: 24px;
+    }
+
+    .filter-btn {
+        width: 158px;
+    }
+
+    .card-img-placeholder {
+        width: 340px;
+        height: 277px;
+    }
+
+    .more-btn {
+        display: block;
+        width: 340px;
+        margin: 32px auto 0;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .section-furniture-list{
+        padding: 80px 0;
+    }
+
+    .title-furniture {
+        font-size: 48px;
+        
+    }
+
+    .filter-btn {
+        width: 166px;
+    }
+
+    .card-img-placeholder {
+        width: 310px;
+        height: 257px;
+    }
+
+    .more-btn {
+        width: 421px;
+    }
+
+>>>>>>> main
 }
