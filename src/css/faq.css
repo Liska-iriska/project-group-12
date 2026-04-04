@@ -15,21 +15,35 @@ margin-bottom: 32px;
 color: #080C09;
 }
 .ac{
-border-bottom: 1px;
+border-bottom: 1px solid #ccc;
 }
 .ac-header{
 font-family: Raleway;
-font-weight: 700;    
-text-align: center;
+font-weight: 700; 
+text-align: left;
 font-size: 18px;
 margin-bottom: 32px;
 color: #080C09;
 padding: 20px 56px 20px 0;  
 }
+.ac-trigger {
+  background: none;
+  border: none;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+}
+.ac-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
 .ac-text{
 font-family: Raleway;
-font-weight: 400;    
-text-align: center;
+font-weight: 400; 
+text-align: left;  
 font-size: 16px;
 margin-bottom: 24px;
 color: #080C09;     
