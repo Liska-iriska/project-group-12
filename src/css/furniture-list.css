@@ -153,6 +153,14 @@
     color: #080C09;
 }
 
+.card-btn:hover,
+.card-btn:focus {
+    box-shadow: 0 1px 2px 0 rgba(8, 12, 9, 0.05), inset 0 -2px 1px 0 rgba(8, 12, 9, 0.05), inset 0 0 0 1px rgba(8, 12, 9, 0.05);
+    background: rgba(8, 12, 9, 0.05);
+    opacity: 0.5;
+    outline: none;
+}
+
 .more-btn {
     margin-top: 32px;
     border-radius: 100px;
@@ -170,6 +178,14 @@
     color: #fff;
 }
 
+.more-btn:focus, 
+.more-btn:hover {
+    box-shadow: 0 1px 2px 0 rgba(8, 12, 9, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(8, 12, 9, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+        background: #6B0609;
+        opacity: 0.5;
+    outline: none;
+}
+
 @media only screen and (min-width: 769px) {
     .filter-list {
         gap: 24px;
@@ -184,59 +200,10 @@
         height: 277px;
     }
 
-    .pagination {
-        margin-top: 32px;
-        display: flex;
-        gap: 4px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .arrow-btn {
-        border: 1px solid rgba(8, 12, 9, 0.15);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: #eee;
-        cursor: pointer;
-        color: #080C09;
-    }
-
-    .arrow-btn svg {
-        fill: currentColor;
-    }
-
-    .page-btn {
-        min-width: 56px;
-        height: 48px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        background: transparent;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1.6;
-        color: #080C09;
-    }
-
-    .page-btn.active {
-    box-shadow:
-            0 1px 2px 0 rgba(8, 12, 9, 0.05),
-            inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-            inset 0 0 0 1px rgba(8, 12, 9, 0.15),
-            inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-            inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-        background: rgba(107, 6, 9, 1);
-        color: #fff;
-    }
-
-    .dots {
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 1.5;
+    .more-btn {
+        display: block;
+        width: 340px;
+        margin: 32px auto 0;
     }
 }
 
@@ -247,12 +214,20 @@
 
     .title-furniture {
         font-size: 48px;
+        
     }
-    
+
+    .filter-btn {
+        width: 166px;
+    }
 
     .card-img-placeholder {
         width: 310px;
         height: 257px;
+    }
+
+    .more-btn {
+        width: 421px;
     }
 
 }
