@@ -1,4 +1,4 @@
-<section id="feedback" class="feedback">
+<section class="feedback">
   <div class="container">
     <h2 class="feedback-title">Відгуки клієнтів</h2>
     <p class="feedback-text">
@@ -6,11 +6,11 @@
     </p>
     <div class="swiper">
       <ul class="swiper-wrapper js-feedback-list">
-        <!-- <li class="swiper-slide">
-          <p class="feedback-rate">${feedback.rate}</p>
+        <li class="swiper-slide">
+          <div class="js-star" data-rating="${roundedRating}"></div>
           <p class="feedback-descr">${feedback.descr}</p>
           <p class="feedback-author">${feedback.name}</p>
-        </li> -->
+        </li>
       </ul>
       <div class="feedback-nav">
         <div class="swiper-pagination"></div>
