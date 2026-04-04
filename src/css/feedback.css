@@ -1,7 +1,6 @@
 .feedback {
-  padding-block: 64px;
-  max-width: 375px;
-  margin: 0 auto;
+  padding: 64px 0;
+  width: 100%;
 }
 
 .feedback-title {
@@ -124,15 +123,16 @@
 
 @media screen and (min-width: 768px) {
   .feedback {
-    padding: 32px 12px;
-    max-width: 768px;
+    padding: 32px 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .feedback {
-    padding: 64px 44px;
-    max-width: 1440px;
+    padding: 64px 0;
+  }
+  .feedback-title {
+    font-size: 48px;
   }
 }
 
