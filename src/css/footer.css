@@ -63,6 +63,7 @@
   line-height: 1.6;
   text-align: center;
   padding-bottom: 32px;
+  order: 10;
 }
 @media only screen and (min-width: 768px) {
   .footer .container {
@@ -94,6 +95,7 @@
   } 
 .rights {
     margin-bottom: 0;
+    order: 10;
   }
 }
 
@@ -105,7 +107,7 @@
     align-items: center;
     justify-content: space-between; 
   }
-  .footer-logo-img{
+  .footer-logo{
     order: 1;
   }
   .icon-footer {
@@ -119,13 +121,11 @@
   }
   .social-footer{
     margin: 0;
-
-  }
-  .social-footer-li{
-    order: 3;
+    
   }
   .social-footer-wrapper {
     margin: 0;
+    order: 10;
   }
 
   .social-footer.desktop-position {
@@ -134,10 +134,9 @@
   }
   .nav-footer-wrapper{
     padding: 0;
+    order: 3;
   }
-  .nav-footer{
-    order: 4;
-  }
+  
   .rights{
     margin: 0;
     padding: 0;
