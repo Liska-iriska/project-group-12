@@ -1,0 +1,57 @@
+<div class="modal-overlay" id="orderModalOverlay" hidden>
+  <div class="order-modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+
+   <button class="modal-close-btn" id="modalCloseBtn" aria-label="Закрити">
+      <svg class="modal-close-icon" width="14" height="14" aria-hidden="true">
+        <use href="/img/sprite.svg#close"></use>
+      </svg>
+    </button>
+
+    <h2 class="order-modal__title" id="orderModalTitle">Замовити зворотний зв'язок</h2>
+
+    <form class="order-form" id="orderForm" novalidate>
+
+      <div class="form-group">
+        <label class="form-label" for="orderName">Ім'я <span class="form-required">*</span></label>
+        <input
+          class="form-input"
+          type="text"
+          id="orderName"
+          name="name"
+          placeholder="Введіть ваше ім'я"
+          required
+          autocomplete="name"
+        >
+        <span class="form-error" id="nameError">Це поле обов'язкове</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="orderPhone">Телефон <span class="form-required">*</span></label>
+        <input
+          class="form-input"
+          type="tel"
+          id="orderPhone"
+          name="phone"
+          placeholder="+380 (__) ___-__-__"
+          required
+          autocomplete="tel"
+        >
+        <span class="form-error" id="phoneError">Введіть коректний номер</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="orderComment">Коментар</label>
+        <textarea
+          class="form-textarea"
+          id="orderComment"
+          name="comment"
+          placeholder="Ваш коментар або побажання"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitOrderBtn">Надіслати заявку</button>
+
+    </form>
+  </div>
+</div>
