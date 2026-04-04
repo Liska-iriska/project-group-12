@@ -37,8 +37,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 24px;
-    right: 24px;
+    top: 16px;
+    right: 16px;
     background-color: transparent;
     border: transparent;
 }
@@ -47,7 +47,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    margin-top: 16px;
+}
+
+.small-images{
+    display: flex;
+    gap: 16px;
 }
 
 .big-image-sofa{
@@ -215,11 +219,6 @@
         flex-wrap: nowrap;
         flex-direction: column;
 
-    }
-
-    .small-images{
-        display: flex;
-        gap: 16px;
     }
 
     .big-image-sofa {
