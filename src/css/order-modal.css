@@ -202,6 +202,7 @@ body.no-scroll {
 @media (max-width: 560px) {
   .order-modal {
     padding: 32px 20px;
+    max-width: 100%;
   }
 
   .order-modal__title {
