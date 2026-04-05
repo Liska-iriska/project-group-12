@@ -24,18 +24,6 @@
   margin-bottom: 24px;
 }
 
-.swiper-wrapper {
-  display: flex;
-  gap: 24px;
-  overflow: hidden;
-}
-
-.swiper-slide {
-  flex: 0 0 100%;
-  display: block;
-  box-sizing: border-box;
-}
-
 .feedback-descr {
   font-weight: 500;
   font-size: 20px;
@@ -103,13 +91,11 @@
 .feedback-btn:hover {
   background-color: #975052 !important;
   --swiper-theme-color: white;
-  fill: white;
 }
 
 .feedback-btn:active {
   background-color: #6b0609 !important;
   --swiper-theme-color: white;
-  fill: white;
   transform: scale(0.95);
 }
 
@@ -133,33 +119,5 @@
   }
   .feedback-title {
     font-size: 48px;
-  }
-}
-
-@media screen and (min-width: 375px) and (max-width: 767px) {
-  .swiper-slide {
-    flex: 0 0 100%;
-  }
-  .swiper-slide:nth-child(n + 3) {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .swiper-slide {
-    flex: 0 0 50%;
-  }
-  .swiper-slide:nth-child(n + 4) {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .swiper-slide {
-    flex: 0 0 33.3333%;
-    display: block;
-  }
-  .swiper-slide:nth-child(n + 4) {
-    display: none;
   }
 }
