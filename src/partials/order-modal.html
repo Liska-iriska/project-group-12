@@ -1,13 +1,13 @@
-<div class="modal-overlay" id="orderModalOverlay" hidden>
-  <div class="order-modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+<div class="modal-overlay visually-hidden" data-order-modal  aria-modal="true" aria-labelledby="orderModalTitle">
+  <div class="order-modal">
 
-   <button class="modal-close-btn" id="modalCloseBtn" aria-label="Закрити">
-      <svg class="modal-close-icon" width="14" height="14" aria-hidden="true">
+   <button  type="button" class="modal-close-btn" data-order-modal-close aria-label="Закрити">
+      <svg class="modal-close-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <use href="/img/sprite.svg#close"></use>
       </svg>
     </button>
 
-    <h2 class="order-modal__title" id="orderModalTitle">Замовити</h2>
+    <h2 class="order-modal-title" id="orderModalTitle">Замовити зворотний зв'язок</h2>
 
     <form class="order-form" id="orderForm" novalidate>
 
@@ -30,12 +30,13 @@
         <input
           class="form-input"
           type="tel"
-          id="orderPhone"
           name="phone"
+          id="orderPhone"
           placeholder="38 099 123 22 11"
           required
           autocomplete="tel"
         >
+
         <span class="form-error" id="phoneError">Введіть коректний номер</span>
       </div>
 
@@ -43,10 +44,9 @@
         <label class="form-label" for="orderComment">Коментар</label>
         <textarea
           class="form-textarea"
-          id="orderComment"
           name="comment"
-          placeholder="Ваш коментар або побажання"
-          rows="4"
+          id="orderComment"
+          placeholder="Введіть ваш коментар"
         ></textarea>
       </div>
 
