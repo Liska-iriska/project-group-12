@@ -1,75 +1,111 @@
-.accordion{
-  background: #ffffff;
-  padding: 48px 20px;
+.accordion {
+    background: #ffffff;
+    padding: 48px 20px;
 }
-.accordion-container{
- width: 335px; 
-margin: 0 auto;   
+
+.accordion-container {
+    width: 335px;
+    margin: 0 auto;
 }
-.ac-title{
-font-family: Raleway;
-font-weight: 700;    
-text-align: center;
-font-size: 36px;
-margin-bottom: 32px;
-color: #080C09;
+
+.ac-title {
+    font-family: Raleway;
+    font-weight: 700;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 32px;
+    color: #080C09;
 }
-.ac{
-border-bottom: 1px solid #ccc;
+
+.accordion-container .ac {
+    border-top: none;
+    border-bottom: 1px solid #D9D9D9;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 0px;
 }
-.ac-header{
-font-family: Raleway;
-font-weight: 700; 
-text-align: left;
-font-size: 18px;
-margin-bottom: 32px;
-color: #080C09;
-padding: 20px 56px 20px 0;  
+
+.accordion-container .ac:first-of-type {
+    border-top: 1px solid #D9D9D9;
 }
-.ac-trigger {
-  background: none;
-  border: none;
-  width: 100%;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  padding: 0;
+
+.ac-header {
+    font-family: Raleway;
+    font-weight: 700;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #080C09;
+
 }
-.ac-panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+
+.ac-header button {
+    background-color: white;
 }
-.ac-text{
-font-family: Raleway;
-font-weight: 400; 
-text-align: left;  
-font-size: 16px;
-margin-bottom: 24px;
-color: #080C09;     
+
+.accordion-container .ac .ac-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 18px;
+    color: #080C09;
+
+    padding: 21.5px 0;
+}
+
+.ac .ac-trigger::after {
+    /* background-image: url("/img/sprite.svg#chevron-down"); */
+}
+
+.accordion-container .ac .ac-trigger:focus {
+    color: black;
+}
+
+.ac-icon {
+    transition: transform 0.3s ease;
+}
+
+.ac-text {
+    font-family: Raleway;
+    font-weight: 400;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 24px;
+    color: #080C09;
+    text-align: left;
 }
 
 @media screen and (min-width: 768px) {
-.accordion{
-padding: 48px 32px;    
-}
-.accordion-container{
- width: 769px;    
-}
-.ac-header{
-padding: 21.5px 56px 21.5px 0;  
-}
+    .accordion {
+        padding: 48px 32px;
+    }
+
+    .accordion-container {
+        width: 769px;
+    }
+
+    .ac-header {
+        padding: 21.5px 56px 21.5px 0;
+    }
 }
 
 
 @media screen and (min-width: 1158px) {
-.accordion{
-padding: 80px 64px;    
-} 
-.accordion-container{
- width: 865px;    
+    .accordion {
+        padding: 80px 64px;
+    }
+
+    .accordion-container {
+        width: 865px;
+    }
+
+    .ac-header {
+        padding: 21.5px 56px 21.5px 0;
+    }
 }
-.ac-header{
-padding: 21.5px 56px 21.5px 0;  
-}
-}   
