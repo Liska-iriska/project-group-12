@@ -124,3 +124,9 @@
 .popular-btn:focus {
   opacity: 0.5;
 }
+
+@media screen and (min-width: 1440px) {
+  .popular-title {
+    font-size: 48px;
+  }
+}
