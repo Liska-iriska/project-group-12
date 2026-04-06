@@ -39,9 +39,9 @@
   color: #080c09;
 }
 
-.feedback-nav .swiper-pagination {
-  position: static !important;
-  margin: 0 auto !important;
+.feedback-nav #feedback-pagination {
+  position: static;
+  margin: 0 auto;
 }
 
 .feedback-nav {
@@ -52,7 +52,7 @@
   margin-top: 48px;
 }
 
-.swiper-pagination {
+#feedback-pagination {
   display: flex;
   align-items: center;
   margin: 0;
