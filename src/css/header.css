@@ -72,7 +72,6 @@ body {
     width: 100%;
     max-width: 768px;
     height: 100vh;
-
     background: #fff;
 
     display: flex;
@@ -223,6 +222,7 @@ body {
 
     /* MODAL */
     .modal-menu {
+        height: 430px;
         max-width: 250px;
         padding: 0 32px;
     }
@@ -231,7 +231,7 @@ body {
     .modal-menu__list {
         align-items: flex-end;
         gap: 32px;
-        margin-top: 40px;
+        margin-top: 24px;
     }
 
     .modal-menu__list a {
