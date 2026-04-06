@@ -37,6 +37,11 @@
   display: none;
 }
 
+#faq-item-1 .ac-panel .ac-text {
+  font-weight: 400;
+  font-size: 16px;
+}
+
 #faq-item-1 .ac-trigger {
   display: flex;
   justify-content: space-between;
@@ -58,7 +63,7 @@
 }
 
 .faq {
-  margin-top: 48px;
+  padding: 48px 0;
 }
 .faq-title {
   text-align: center;
@@ -94,4 +99,30 @@
 #faq-item-1 .ac-panel .ac-text {
   padding: 0;
   margin-bottom: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  .ac-trigger {
+    height: 72px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq {
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .ac {
+    max-width: 865px;
+  }
+  .faq-title {
+    font-size: 48px;
+  }
+  .faq .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
