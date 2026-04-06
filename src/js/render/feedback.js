@@ -6,10 +6,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-
 import raterJs from 'rater-js';
+
+import showError from '../toast.js';
 
 const BASE_URL = 'https://furniture-store-v2.b.goit.study/api';
 
@@ -77,19 +76,13 @@ async function getFeedback() {
   try {
     const response = await axios.get(`${BASE_URL}/feedbacks?limit=10`);
     if (!response || !response.data) {
-      iziToast.error({
-        message: 'Помилка сервера',
-        position: 'topRight',
-      });
+      showError('Ой! Щось пішло не так.');
       return;
     }
 
     const feedbacks = response.data.feedbacks;
     if (!feedbacks || feedbacks.length === 0) {
-      iziToast.error({
-        message: 'Щось пішло не так, спробуйте пізніше.',
-        position: 'topRight',
-      });
+      showError('Ой! Щось пішло не так.');
       return;
     }
 
@@ -99,11 +92,7 @@ async function getFeedback() {
 
     initStars();
   } catch (error) {
-    iziToast.error({
-      message: 'Щось пішло не так, спробуйте пізніше.',
-      position: 'topRight',
-    });
-    console.log(error);
+    showError('Ой! Щось пішло не так.');
   }
 }
 
