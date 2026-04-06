@@ -1,3 +1,4 @@
+import './js/feedback';
 import { initFilters } from './js/render/filters.js';
 import { initGallery } from './js/render/gallery.js';
 import { initFaqAccordion } from '/js/faq.js';
