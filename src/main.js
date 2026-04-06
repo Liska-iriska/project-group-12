@@ -1,7 +1,6 @@
-import './js/feedback';
+import './js/render/feedback.js';
 import { initFilters } from './js/render/filters.js';
 import { initGallery } from './js/render/gallery.js';
-import { initFaqAccordion } from '/js/faq.js';
 
 initGallery().then(galleryFunctions => {
   initFilters(galleryFunctions.setCategory);
