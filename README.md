@@ -12,6 +12,7 @@
 * **Markup:** HTML5 (робота з SVG-спрайтом).
 * **Styles:** CSS.
 * **Scripting:** JavaScript.
+* **Bundler:** Vite.
 * **Libraries:**
     * <u>Swiper.js</u> — для реалізації слайдерів у блоках відгуків та популярних товарів.
     * <u>iziToast</u> — для обробки сповіщень при роботі з формами.
