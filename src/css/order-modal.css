@@ -6,25 +6,39 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 64px 0;
+  padding: 64px 20px;
 }
 
 .order-modal {
   position: relative;
   background-color: #ffffff;
-
-  width: 866px;
-  height: 718px;
-
+  width: 100%;
+  height: 703px;
   display: flex;
   flex-direction: column;
   gap: 48px;
   align-items: center;
-  padding: 64px;
+  padding: 64px 20px;
   border-radius: 8px;
   box-sizing: border-box;
-
   flex-shrink: 0;
+}
+
+.order-modal-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #080c09;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.submit-btn {
+  width: 100%;
 }
 
 .modal-close-btn {
@@ -49,29 +63,10 @@
 
 .modal-close-icon {
   display: block;
-
   width: 32px;
   height: 32px;
-
   fill: #080c09;
-
   stroke-width: 1.5;
-}
-
-.order-modal-title {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-
-  font-size: 48px;
-  line-height: 1.2;
-
-  letter-spacing: 0.01em;
-  color: #080c09;
-  text-align: center;
-  margin: 0;
-  width: 100%;
-
-  flex-shrink: 0;
 }
 
 .order-form {
@@ -80,7 +75,6 @@
   gap: 24px;
   align-items: center;
   width: 100%;
-
   flex-shrink: 0;
 }
 
@@ -209,16 +203,14 @@
   background-color: #3d0305;
 }
 
-.modal-overlay {
-  padding: 64px 32px;
-}
+@media screen and (min-width: 768px) {
+  .modal-overlay {
+    padding: 64px 32px;
+  }
 
-@media (max-width: 768px) {
   .order-modal {
-     width: 100%;
-
+    width: 100%;
     height: 671px;
-
     padding: 64px 32px 32px;
     gap: 48px;
   }
@@ -227,27 +219,30 @@
     font-size: 36px;
     letter-spacing: 0.01em;
   }
+
+  .submit-btn {
+    width: 196px;
+  }
 }
 
-@media (max-width: 480px) {
+@media screen and (min-width: 1440px) {
   .modal-overlay {
-    padding: 64px 20px;
+    padding: 64px 0;
   }
 
   .order-modal {
-
-    width: 100%;
-    height: 703px;
-
-    padding: 64px 20px;
+    width: 866px;
+    height: 718px;
+    padding: 64px;
+    gap: 48px;
   }
 
   .order-modal-title {
-    font-size: 36px;
+    font-size: 48px;
     letter-spacing: 0.01em;
   }
 
   .submit-btn {
-    width: 100%;
+    width: 196px;
   }
 }
