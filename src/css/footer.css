@@ -1,13 +1,13 @@
 .footer {
   display: flex;
   padding: 0 32px;
-  background-color: #6B0609;
+  background-color: #6b0609;
 
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .social-footer.desktop-position {
@@ -15,9 +15,8 @@
 }
 .footer .container {
   flex-direction: column;
-  
 }
-.footer-logo{
+.footer-logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +25,7 @@
 .footer-logo-img {
   width: 228px;
   height: 97px;
-  filter: brightness(0) invert(1); 
+  filter: brightness(0) invert(1);
 }
 
 .nav-footer {
@@ -36,10 +35,9 @@
   align-items: center;
   justify-content: center;
 }
-.social-footer-li{
+.social-footer-li {
   position: relative;
-  outline:none;
-  
+  outline: none;
 }
 .social-footer {
   display: flex;
@@ -52,12 +50,12 @@
 .social-footer-wrapper {
   margin: 0 auto;
 }
-.icon-footer{
-  fill: #FFFFFF;
+.icon-footer {
+  fill: #ffffff;
   width: 24px;
-  height: 24px
+  height: 24px;
 }
-.rights{
+.rights {
   margin-top: 24px;
   font-weight: 400;
   font-size: 14px;
@@ -70,12 +68,12 @@
   .footer .container {
     width: 100%;
   }
-  .footer-logo-img{
+  .footer-logo-img {
     display: block;
     margin: 0 auto;
   }
   .nav-footer-wrapper {
-    padding-top: 24px ;
+    padding-top: 24px;
   }
   .nav-footer {
     flex-direction: row;
@@ -84,8 +82,8 @@
     width: 24px;
     height: 24px;
   }
-  .social-footer{
-    gap: 32px;
+  .social-footer {
+    gap: 24px;
   }
   .social-footer-link {
     align-items: center;
@@ -93,8 +91,8 @@
     display: flex;
     width: 40px;
     height: 40px;
-  } 
-.rights {
+  }
+  .rights {
     margin-bottom: 0;
     order: 10;
   }
@@ -102,13 +100,13 @@
 
 @media only screen and (min-width: 1440px) {
   .footer .container {
-    display:flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
   }
-  .footer-logo{
+  .footer-logo {
     margin: 0;
     order: 1;
   }
@@ -121,9 +119,8 @@
     width: 24px;
     height: 24px;
   }
-  .social-footer{
+  .social-footer {
     margin: 0;
-    
   }
   .social-footer-wrapper {
     margin: 0;
@@ -134,15 +131,14 @@
     display: flex;
     justify-content: right;
   }
-  .nav-footer-wrapper{
+  .nav-footer-wrapper {
     padding: 0;
     order: 3;
   }
-  
-  .rights{
+
+  .rights {
     margin: 0;
     padding: 0;
     order: 2;
   }
- 
 }
