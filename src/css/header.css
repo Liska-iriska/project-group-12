@@ -86,11 +86,14 @@ body {
 
 /* Активний стан */
 .modal-menu.active {
+    display: flex;
+    align-items: center;
     transform: translateX(0);
 }
 
 /* ===== HEADER ===== */
 .menu_header {
+    width: 335px;
     height: 72px;
     display: flex;
     justify-content: space-between;
@@ -157,14 +160,17 @@ body {
 
 /* ===== FOOTER ===== */
 .menu_footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 32px;
 }
 
 .buy_button {
     display: flex;
-        align-items: center;
-        justify-content: center;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 335px;
     height: 42px;
     border: none;
     border-radius: 30px;

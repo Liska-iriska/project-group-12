@@ -16,6 +16,11 @@ burger.addEventListener('click', () => {
     isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
   );
 
+  burgerIcon.setAttribute(
+    'href',
+    isOpen ? '/img/sprite.svg#menu' : '/img/sprite.svg#close'
+  );
+
   overlay.classList.toggle('active');
 
   document.body.style.overflow = isOpen ? 'hidden' : '';
