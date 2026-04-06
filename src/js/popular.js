@@ -6,7 +6,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -67,8 +67,8 @@ const renderPopular = async () => {
 
 renderPopular();
 
-const swiper = new Swiper('.swiper', {
-  modules: [Navigation, Pagination],
+const swiper = new Swiper('.popular-swiper', {
+  modules: [Navigation, Pagination, Keyboard],
   slidesPerView: 1,
   spaceBetween: 24,
   keyboard: {
