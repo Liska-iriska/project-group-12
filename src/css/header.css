@@ -37,6 +37,11 @@ body {
     display: none;
 }
 
+.header__btn:focus {
+    background: #6B0609;
+    opacity: 0.5;
+}
+
 .logo {
     fill: #080C09;
     display: flex;
@@ -68,7 +73,7 @@ body {
     max-width: 768px;
     height: 100vh;
 
-    background: #f5f1e9;
+    background: #fff;
 
     display: flex;
     flex-direction: column;
@@ -173,6 +178,12 @@ body {
             background: #6B0609;
 }
 
+.buy_button:hover,
+.buy_button:focus {
+    opacity: 0.5;
+}
+
+
 .overlay {
     position: fixed;
     top: 0;
@@ -193,7 +204,6 @@ body {
     opacity: 1;
     visibility: visible;
 }   
-
 
 @media (min-width: 768px) {
 
@@ -295,6 +305,11 @@ body {
         cursor: pointer;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
         background: #6B0609;
+    }
+
+    .header__btn:hover,
+    .header__btn:focus {
+        opacity: 0.5;
     }
 
     .header__right {

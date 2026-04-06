@@ -43,8 +43,7 @@
     color: #fff;
 }
 
-.filter-btn:focus {
-    outline: none;
+.active {
     box-shadow: inset 0 0 0 8px #6B0609;
 }
 
@@ -81,6 +80,87 @@
     background-repeat: no-repeat;
 }
 
+.filter-table {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/5.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-chair {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/6.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-kitchen {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/7.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-childrens {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/8.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-office {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/9.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-rest {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/10.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-bathroom {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/11.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-outdoor {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/12.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter-decor {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/categories/13.2x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .card-gallery {
     margin-top: 40px;
 }
@@ -91,13 +171,17 @@
     gap: 24px;
 }
 
-.card-list-item {}
+.card-list-item {
+    width: 335px;
+    height: 456px;
+}
 
-.card-img-placeholder {
+.card-img {
     border-radius: 8px;
     width: 335px;
     height: 277px;
-    background-color: #ccc;
+    object-fit: cover;
+    display: block;
 }
 
 .card-content {
@@ -107,6 +191,7 @@
 }
 
 .card-title {
+    max-width: 340px;
     font-weight: 600;
     font-size: 18px;
     line-height: 1.6;
@@ -195,7 +280,12 @@
         width: 158px;
     }
 
-    .card-img-placeholder {
+    .card-list-item {
+        width: 340px;
+        height: 460px;
+    }
+
+    .card-img {
         width: 340px;
         height: 277px;
     }
@@ -221,7 +311,12 @@
         width: 166px;
     }
 
-    .card-img-placeholder {
+    .card-list-item {
+        width: 310px;
+        height: 435px;
+    }
+
+    .card-img {
         width: 310px;
         height: 257px;
     }
