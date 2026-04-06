@@ -36,7 +36,7 @@ function initStars() {
 
 // Ініціалізує слайдер відгуків через Swiper
 function initSwiper() {
-  const swiper = new Swiper('.swiper', {
+  const swiper = new Swiper('.feedback-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 16,
