@@ -9,7 +9,7 @@
 
 ## 🛠 Технологічний стек
 Проєкт виконано з використанням сучасних стандартів веб-розробки:
-* **Markup:** HTML5 (робота з SVG-спрайтом).
+* **Markup:** HTML5 (робота з SVG-спрайтом) & Mobile first.
 * **Styles:** CSS.
 * **Scripting:** JavaScript.
 * **Bundler:** Vite.
