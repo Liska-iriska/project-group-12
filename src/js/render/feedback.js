@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -8,9 +6,8 @@ import 'swiper/css/pagination';
 
 import raterJs from 'rater-js';
 
-import showError from '../toast.js';
-
-const BASE_URL = 'https://furniture-store-v2.b.goit.study/api';
+import { getFeedback } from '../api.js';
+import { showError } from '../utils/toast.js';
 
 const refs = {
   feedbackList: document.querySelector('.js-feedback-list'),
@@ -72,27 +69,27 @@ function initSwiper() {
 }
 
 // Отримує відгуки з API та ініціалізує рендер, Swiper і зірковий рейтинг
-async function getFeedback() {
+async function loadFeedback() {
   try {
-    const response = await axios.get(`${BASE_URL}/feedbacks?limit=10`);
-    if (!response || !response.data) {
-      showError('Ой! Щось пішло не так.');
+    const data = await getFeedback(10);
+
+    if (!data || !data.feedbacks) {
+      showError('Відгуки відсутні.');
       return;
     }
 
-    const feedbacks = response.data.feedbacks;
-    if (!feedbacks || feedbacks.length === 0) {
-      showError('Ой! Щось пішло не так.');
+    const feedbacks = data.feedbacks;
+
+    if (feedbacks.length === 0) {
+      showError('Відгуки відсутні.');
       return;
     }
 
     renderFeedbacks(feedbacks);
-
     initSwiper();
-
     initStars();
   } catch (error) {
-    showError('Ой! Щось пішло не так.');
+    console.error('Feedback error:', error);
   }
 }
 
@@ -115,4 +112,4 @@ function renderFeedbacks(feedbacks) {
   refs.feedbackList.innerHTML = markup;
 }
 
-getFeedback();
+loadFeedback();
