@@ -12,10 +12,10 @@
 .order-modal {
   position: relative;
   background-color: #ffffff;
+
   width: 866px;
-  max-width: calc(100vw - 32px);
-  max-height: calc(100vh - 128px);
-  overflow-y: auto;
+  height: 718px;
+
   display: flex;
   flex-direction: column;
   gap: 48px;
@@ -23,6 +23,8 @@
   padding: 64px;
   border-radius: 8px;
   box-sizing: border-box;
+
+  flex-shrink: 0;
 }
 
 .modal-close-btn {
@@ -47,8 +49,10 @@
 
 .modal-close-icon {
   display: block;
-  width: 14px;
-  height: 14px;
+
+  width: 32px;
+  height: 32px;
+
   fill: none;
   stroke: #080c09;
   stroke-width: 1.5;
@@ -57,13 +61,17 @@
 .order-modal-title {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
+
   font-size: 48px;
   line-height: 1.2;
-  letter-spacing: 0.48px;
+
+  letter-spacing: 0.01em;
   color: #080c09;
   text-align: center;
   margin: 0;
   width: 100%;
+
+  flex-shrink: 0;
 }
 
 .order-form {
@@ -72,6 +80,8 @@
   gap: 24px;
   align-items: center;
   width: 100%;
+
+  flex-shrink: 0;
 }
 
 .form-group {
@@ -205,13 +215,17 @@
 
 @media (max-width: 768px) {
   .order-modal {
-    width: 100%;
+     width: 100%;
+
+    height: 671px;
+
     padding: 64px 32px 32px;
+    gap: 48px;
   }
 
   .order-modal-title {
     font-size: 36px;
-    letter-spacing: 0.36px;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -221,12 +235,16 @@
   }
 
   .order-modal {
+
+    width: 100%;
+    height: 703px;
+
     padding: 64px 20px;
   }
 
   .order-modal-title {
     font-size: 36px;
-    letter-spacing: 0.36px;
+    letter-spacing: 0.01em;
   }
 
   .submit-btn {
