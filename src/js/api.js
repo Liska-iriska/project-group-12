@@ -35,7 +35,7 @@ export async function getCategories() {
   }
 }
 
-export async function getFeedback(limit = 10) {
+export async function getFeedback(limit = 25) {
   try {
     const response = await api.get(`/feedbacks?limit=${limit}`);
     return response.data;

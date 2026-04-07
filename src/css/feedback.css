@@ -39,25 +39,29 @@
   color: #080c09;
 }
 
-.feedback-nav #feedback-pagination {
-  position: static;
-  margin: 0 auto;
-}
-
 .feedback-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   margin-top: 48px;
 }
 
 #feedback-pagination {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  transform: none;
+}
+
+#feedback-pagination .swiper-pagination-bullet-active {
+  background: #080c09;
+}
+
+#feedback-navigation {
+  position: relative;
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  --swiper-theme-color: #080c09;
+  gap: 16px;
 }
 
 .feedback-btns {
@@ -66,45 +70,36 @@
   align-items: center;
 }
 
-.feedback-btn svg {
-  width: 24px !important;
-  height: 24px !important;
-  flex-shrink: 0;
-}
-
-.feedback-btn {
-  position: static !important;
-  width: 48px;
-  height: 48px;
+.feedback-button-prev,
+.feedback-button-next {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   border-radius: 50%;
   background-color: #f2f2f2;
   border: 1px solid rgba(8, 12, 9, 0.15);
-  transition:
-    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --swiper-theme-color: #080c09;
+  padding: 12px;
+  transition: opacity 250ms ease;
 }
 
-.feedback-btn:hover {
-  background-color: #975052 !important;
-  --swiper-theme-color: white;
+.feedback-button-prev:hover,
+.feedback-button-next:hover,
+.feedback-button-prev:focus,
+.feedback-button-next:focus {
+  cursor: pointer;
+  background: #975052;
+  fill: white;
 }
 
-.feedback-btn:active {
-  background-color: #6b0609 !important;
-  --swiper-theme-color: white;
-  transform: scale(0.95);
+.feedback-button-prev:active,
+.feedback-button-next:active {
+  background: #6b0609;
 }
 
-.feedback-btn:focus {
-  background-color: #f2f2f2;
-}
-
-.feedback-btn:disabled {
+.feedback-button-prev.swiper-button-disabled,
+.feedback-button-next.swiper-button-disabled {
   opacity: 0.3;
+  cursor: default;
 }
 
 @media screen and (min-width: 768px) {

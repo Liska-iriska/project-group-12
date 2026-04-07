@@ -41,16 +41,20 @@ function initSwiper() {
     slidesPerView: 1,
     spaceBetween: 16,
     grabCursor: true,
-    watchOverflow: true,
     loop: false,
+
+    observer: true,
+    observeParents: true,
 
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
+      dynamicBullets: true,
+      dynamicMainBullets: 3,
     },
     navigation: {
-      prevEl: '.swiper-button-prev',
-      nextEl: '.swiper-button-next',
+      prevEl: '.feedback-button-prev',
+      nextEl: '.feedback-button-next',
     },
 
     breakpoints: {
@@ -71,7 +75,7 @@ function initSwiper() {
 // Отримує відгуки з API та ініціалізує рендер, Swiper і зірковий рейтинг
 async function loadFeedback() {
   try {
-    const data = await getFeedback(10);
+    const data = await getFeedback();
 
     if (!data || !data.feedbacks) {
       showError('Відгуки відсутні.');
