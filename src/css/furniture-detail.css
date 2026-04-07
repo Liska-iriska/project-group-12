@@ -60,10 +60,13 @@
     border-radius: 8px;
 }
 
-.small-image-sofa{
+.small-img{
     border-radius: 8px;
     width: 139px;
     height: 197px;
+    flex: 0 0 auto;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .furniture-title{
@@ -139,7 +142,8 @@
     background-color: #201A19;
 }
 
-.color-option input:checked+.color-swatch {
+.color-dot.active {
+    box-shadow: none;
     outline: 4px solid #838584;
 }
 
@@ -193,7 +197,7 @@
         width: 640px;
     }
 
-    .small-image-sofa {
+    .small-img {
         width: 312px;
     }
 
@@ -226,13 +230,13 @@
         height: 308px;
     }
 
-    .small-image-sofa {
+    .small-img {
         width: 282px;
     }
 
     .furniture-title {
         font-size: 40px;
-        margin-top: 16px;
+        margin-top: 0px;
     }
 
     .modal-furniture-price {

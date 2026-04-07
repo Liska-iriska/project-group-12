@@ -1,5 +1,12 @@
 import { getFurnitures, getCategories } from '../api.js';
 
+const refs = {
+  furnitureList: document.querySelector('.card-list'),
+  loadMoreBtn: document.querySelector('.more-btn'),
+  filterList: document.querySelector('.filter-list'),
+  filterButtons: document.querySelectorAll('.filter-btn'),
+};
+
 const state = {
   page: 1,
   limit: 10,
@@ -236,7 +243,6 @@ async function loadFurniturePage() {
   try {
     const payload = await getFurnitures(state.page, state.limit);
     const newItems = extractItemsFromResponse(payload);
-
     state.loadedItems = mergeUniqueItems(state.loadedItems, newItems);
     updateHasMore(payload, newItems.length);
 
