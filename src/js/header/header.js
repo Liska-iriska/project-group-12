@@ -15,7 +15,7 @@ function closeMenu() {
   burger.classList.remove('active');
   overlay.classList.remove('active');
   if (burgerIcon) {
-    burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
+    burgerIcon.setAttribute('href', 'img/sprite.svg#menu');
   }
   document.body.classList.remove('is-open');
 }
@@ -28,7 +28,7 @@ burger.addEventListener('click', () => {
   if (burgerIcon) {
     burgerIcon.setAttribute(
       'href',
-      isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
+      isOpen ? 'img/sprite.svg#close' : 'img/sprite.svg#menu'
     );
   }
 
