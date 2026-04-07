@@ -1,4 +1,6 @@
-import './js/feedback';
+import './js/header.js';
+import './js/render/feedback.js';
+import { initFaqAccordion } from './js/faq.js';
 import { initFilters } from './js/render/filters.js';
 import { initGallery } from './js/render/gallery.js';
 import './js/render/furniture-detail.js';

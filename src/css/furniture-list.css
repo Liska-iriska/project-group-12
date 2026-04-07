@@ -41,124 +41,185 @@
     letter-spacing: 0.01em;
     text-align: center;
     color: #fff;
+    padding: 0 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.active {
+.active-filter {
     box-shadow: inset 0 0 0 8px #6B0609;
 }
 
 .filter-all {
-    background: 
+    background-image: 
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/1.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/1.jpg') ;
+    
 }
+@media (min-resolution: 2dppx) {
+    .filter-all {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/1.2x.jpg");
+    }
+}
+
+
 .filter-soft {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/2.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/2.jpg');
 }
+@media (min-resolution: 2dppx) {
+    .filter-soft {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/2.2x.jpg");
+    }
+}
+
 .filter-cupboard {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/3.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/3.jpg');
 }
+@media (min-resolution: 2dppx) {
+    .filter-cupboard {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/3.2x.jpg");
+    }
+}
+
 .filter-bed{
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/4.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/4.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-bed {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/4.2x.jpg");
+    }
 }
 
 .filter-table {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/5.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/5.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-table {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/5.2x.jpg");
+    }
 }
 
 .filter-chair {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/6.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/6.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-chair {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/6.2x.jpg");
+    }
 }
 
 .filter-kitchen {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/7.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/7.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-kitchen {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/7.2x.jpg");
+    }
 }
 
 .filter-childrens {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/8.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/8.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-childrens {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/8.2x.jpg");
+    }
 }
 
 .filter-office {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/9.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/9.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-office {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/9.2x.jpg");
+    }
 }
 
 .filter-rest {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/10.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/10.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-rest {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/10.2x.jpg");
+    }
 }
 
 .filter-bathroom {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/11.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/11.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-bathroom {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/11.2x.jpg");
+    }
 }
 
 .filter-outdoor {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/12.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/12.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-outdoor {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/12.2x.jpg");
+    }
 }
 
 .filter-decor {
-    background:
+    background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/13.2x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url('../img/categories/13.jpg');
+}
+@media (min-resolution: 2dppx) {
+    .filter-decor {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
+            url("../img/categories/13.2x.jpg");
+    }
 }
 
 .card-gallery {
@@ -174,20 +235,24 @@
 .card-list-item {
     width: 335px;
     height: 456px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-img {
     border-radius: 8px;
-    width: 335px;
+    width: 100%;
     height: 277px;
     object-fit: cover;
     display: block;
+    margin-bottom: 8px;
 }
 
 .card-content {
-    padding-top: 16px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    margin-bottom: auto;
 }
 
 .card-title {
@@ -198,7 +263,6 @@
 }
 
 .card-colors {
-    margin-top: 8px;
     display: flex;
     gap: 16px;
 }
@@ -212,17 +276,15 @@
 }
 
 .card-price {
-    margin-top: 8px;
     font-weight: 600;
     font-size: 20px;
     line-height: 1.6;
 }
 
 .card-btn {
-    margin-top: 16px;
     border-radius: 100px;
     padding: 10px 24px;
-    width: 100%;
+    width: 335px;
     height: 46px;
     border: none;
     box-shadow:
@@ -236,6 +298,7 @@
     font-size: 16px;
     line-height: 1.6;
     color: #080C09;
+
 }
 
 .card-btn:hover,
@@ -287,7 +350,11 @@
 
     .card-img {
         width: 340px;
-        height: 277px;
+        height: 281px;
+    }
+
+    .card-btn {
+        width: 340px;
     }
 
     .more-btn {
@@ -318,7 +385,11 @@
 
     .card-img {
         width: 310px;
-        height: 257px;
+        height: 256px;
+    }
+
+    .card-btn {
+        width: 310px;
     }
 
     .more-btn {

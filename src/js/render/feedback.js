@@ -1,17 +1,13 @@
-import axios from 'axios';
-
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-
 import raterJs from 'rater-js';
 
-const BASE_URL = 'https://furniture-store-v2.b.goit.study/api';
+import { getFeedback } from '../api.js';
+import { showError } from '../utils/toast.js';
 
 const refs = {
   feedbackList: document.querySelector('.js-feedback-list'),
@@ -40,7 +36,7 @@ function initStars() {
 
 // Ініціалізує слайдер відгуків через Swiper
 function initSwiper() {
-  const swiper = new Swiper('.swiper', {
+  const swiper = new Swiper('.feedback-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 16,
@@ -73,37 +69,27 @@ function initSwiper() {
 }
 
 // Отримує відгуки з API та ініціалізує рендер, Swiper і зірковий рейтинг
-async function getFeedback() {
+async function loadFeedback() {
   try {
-    const response = await axios.get(`${BASE_URL}/feedbacks?limit=10`);
-    if (!response || !response.data) {
-      iziToast.error({
-        message: 'Помилка сервера',
-        position: 'topRight',
-      });
+    const data = await getFeedback(10);
+
+    if (!data || !data.feedbacks) {
+      showError('Відгуки відсутні.');
       return;
     }
 
-    const feedbacks = response.data.feedbacks;
-    if (!feedbacks || feedbacks.length === 0) {
-      iziToast.error({
-        message: 'Щось пішло не так, спробуйте пізніше.',
-        position: 'topRight',
-      });
+    const feedbacks = data.feedbacks;
+
+    if (feedbacks.length === 0) {
+      showError('Відгуки відсутні.');
       return;
     }
 
     renderFeedbacks(feedbacks);
-
     initSwiper();
-
     initStars();
   } catch (error) {
-    iziToast.error({
-      message: 'Щось пішло не так, спробуйте пізніше.',
-      position: 'topRight',
-    });
-    console.log(error);
+    console.error('Feedback error:', error);
   }
 }
 
@@ -126,4 +112,4 @@ function renderFeedbacks(feedbacks) {
   refs.feedbackList.innerHTML = markup;
 }
 
-getFeedback();
+loadFeedback();

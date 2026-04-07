@@ -165,6 +165,7 @@ list.addEventListener('click', async event => {
     }
 
     const item = await getFurnitureById(id);
+    console
 
     if (!item) return;
     updateModal(item);

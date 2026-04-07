@@ -1,5 +1,49 @@
-<header class="header">
-  <div class="container">
-    <nav class="nav"></nav>
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header__container">
+    <!-- Лого -->
+    <a href="./index.html" class="logo">
+      <img class="logo-icon" src="/img/logo.svg" alt="Mebleria Logo" />
+    </a>
+
+    <div class="header__right">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#furniture-list">Наші меблі</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#faq">Часті питання</a></li>
+          <li><a href="#feedback">Відгуки</a></li>
+        </ul>
+      </nav>
+
+      <!-- Кнопка -->
+      <a class="header__btn" href="#furniture-list">До покупок</a>
+    </div>
+
+    <!-- Бургер -->
+    <button type="button" class="burger">
+      <svg class="icon_burger">
+        <use href="img/sprite.svg#menu"></use>
+      </svg>
+    </button>
   </div>
 </header>
+
+<div id="mobileMenu" class="modal-menu">
+  <div>
+    <ul class="modal-menu__list">
+      <li><a href="#furniture-list">Наші меблі</a></li>
+      <li><a href="#about">Про нас</a></li>
+      <li><a href="#popular">Популярне</a></li>
+      <li><a href="#faq">Часті питання</a></li>
+      <li><a href="#feedback">Відгуки</a></li>
+    </ul>
+  </div>
+  <div class="menu_footer">
+    <a class="buy_button" href="#furniture-list">До покупок</a>
+  </div>
+</div>
+
+<!-- <script src="/js/header.js"></script> -->
+
+<div class="overlay"></div>

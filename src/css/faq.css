@@ -1,0 +1,128 @@
+.ac-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 20px 0;
+  cursor: pointer;
+  border-top: 1px solid rgba(8, 12, 9, 0.15);
+}
+
+.ac-icon {
+  fill: #2e2f42;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ac.is-active .ac-icon {
+  transform: rotate(180deg);
+}
+
+.ac-panel {
+  overflow: hidden;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+
+.ac-text {
+  padding-bottom: 20px;
+  color: #4f4f4f;
+  line-height: 1.5;
+}
+
+.ac-trigger::after {
+  display: none;
+}
+
+#faq-item-1 .ac-panel .ac-text {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+#faq-item-1 .ac-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 20px 0;
+  cursor: pointer;
+  /* border-top: 1px solid #e0e0e0; */
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.ac .ac-trigger span {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.faq {
+  padding: 48px 0;
+}
+.faq-title {
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 700;
+  font-size: 36px;
+
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+.faq .ac {
+  margin-bottom: 0px;
+  border: none;
+  border-top: 1px solid rgba(8, 12, 9, 0.15);
+}
+.faq .ac:last-of-type {
+  border-bottom: 1px solid rgba(8, 12, 9, 0.15);
+}
+.faq .ac-trigger {
+  border: none;
+}
+
+.ac-header {
+  font-weight: 700;
+  font-size: 18px;
+
+  line-height: 1.6;
+}
+
+.ac-trigger {
+  height: 98px;
+}
+#faq-item-1 .ac-panel .ac-text {
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  .ac-trigger {
+    height: 72px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .faq {
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .ac {
+    max-width: 865px;
+  }
+  .faq-title {
+    font-size: 48px;
+  }
+  .faq .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
