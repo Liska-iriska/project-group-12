@@ -2,7 +2,7 @@
 <header class="header" id="header">
   <div class="container header__container">
     <!-- Лого -->
-    <a href="/index.html" class="logo">
+    <a href="./index.html" class="logo">
       <img class="logo-icon" src="/img/logo.svg" alt="Mebleria Logo" />
     </a>
 
@@ -17,7 +17,7 @@
       </nav>
 
       <!-- Кнопка -->
-      <button type="button" class="header__btn">До покупок</button>
+      <a class="header__btn" href="#furniture-list">До покупок</a>
     </div>
 
     <!-- Бургер -->
@@ -29,29 +29,20 @@
   </div>
 </header>
 
-<nav id="mobileMenu" class="modal-menu">
-  <div class="menu_header">
-    <div class="logo">
-      <a href="/index.html" class="logo">
-        <img class="logo-icon" src="/img/logo.svg" alt="Mebleria Logo" />
-      </a>
-    </div>
-    <button class="modal-menu__close" aria-label="Закрити меню">
-      <svg class="icon_close">
-        <use href="/img/sprite.svg#close"></use>
-      </svg>
-    </button>
+<div id="mobileMenu" class="modal-menu">
+  <div>
+    <ul class="modal-menu__list">
+      <li><a href="#furniture-list">Наші меблі</a></li>
+      <li><a href="#about">Про нас</a></li>
+      <li><a href="#popular">Популярне</a></li>
+      <li><a href="#faq">Часті питання</a></li>
+      <li><a href="#feedback">Відгуки</a></li>
+    </ul>
   </div>
-  <ul class="modal-menu__list">
-    <li><a href="#furniture-list">Наші меблі</a></li>
-    <li><a href="#about">Про нас</a></li>
-    <li><a href="#faq">Часті питання</a></li>
-    <li><a href="#feedback">Відгуки</a></li>
-  </ul>
   <div class="menu_footer">
-    <button type="button" class="buy_button">До покупок</button>
+    <a class="buy_button" href="#furniture-list">До покупок</a>
   </div>
-</nav>
+</div>
 
 <script src="./js/header/header.js"></script>
 
