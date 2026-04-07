@@ -56,8 +56,8 @@ export function renderGallery() {
             ${f.color.map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join("")}
           </div>
           <p class="card-price">${f.price} грн</p>
-          <button class="card-btn">Детальніше</button>
         </div>
+        <button class="card-btn">Детальніше</button>
       </li>
     `).join("");
 
