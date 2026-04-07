@@ -4,7 +4,7 @@ const burger = document.querySelector('.burger');
 const menu = document.querySelector('#mobileMenu');
 const closeBtn = document.querySelector('.modal-menu__close');
 const menuLinks = document.querySelectorAll('.modal-menu__list a');
-const burgerIcon = burger.querySelector('use');
+const burgerIcon = burger?.querySelector('use');
 const overlay = document.querySelector('.overlay');
 
 burger.addEventListener('click', () => {
@@ -16,14 +16,11 @@ burger.addEventListener('click', () => {
     isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
   );
 
-  burgerIcon.setAttribute(
-    'href',
-    isOpen ? '/img/sprite.svg#menu' : '/img/sprite.svg#close'
-  );
-
-  overlay.classList.toggle('active');
-
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+  if (isOpen) {
+    document.body.classList.add('is-open');
+  } else {
+    document.body.classList.remove('is-open');
+  }
 });
 
 function closeMenu() {
@@ -31,8 +28,8 @@ function closeMenu() {
   burger.classList.remove('active');
   overlay.classList.remove('active');
   if (burgerIcon) {
-  burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
-}
+    burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
+  }
   document.body.style.overflow = '';
 }
 
@@ -54,8 +51,8 @@ document.addEventListener('keydown', e => {
 // ORDER MODAL
 
 const openButtons = document.querySelectorAll('.header__btn, .buy_button');
-const orderModal = document.querySelector('#order-modal');
-const closeModalBtn = document.querySelector('.order-modal__close');
+const orderModal = document.querySelector('.order-modal');
+const closeModalBtn = document.querySelector('.modal-close-btn');
 
 openButtons.forEach(btn => {
   btn.addEventListener('click', () => {
