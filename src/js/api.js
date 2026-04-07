@@ -35,9 +35,9 @@ export async function getCategories() {
   }
 }
 
-export async function getFeedback(limit = 25) {
+export async function getFeedback() {
   try {
-    const response = await api.get(`/feedbacks?limit=${limit}`);
+    const response = await api.get(`/feedbacks?limit=25`);
     return response.data;
   } catch (err) {
     showError('Не вдалося завантажити відгуки.');
