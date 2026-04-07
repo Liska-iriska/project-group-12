@@ -1,27 +1,14 @@
-// BURGER MENU
+// BURGER MENU & MODALS
 
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('#mobileMenu');
 const closeBtn = document.querySelector('.modal-menu__close');
-const menuLinks = document.querySelectorAll('.modal-menu__list a');
+
+const allMenuLinks = document.querySelectorAll(
+  '#mobileMenu a, #mobileMenu button'
+);
 const burgerIcon = burger?.querySelector('use');
 const overlay = document.querySelector('.overlay');
-
-burger.addEventListener('click', () => {
-  const isOpen = menu.classList.toggle('active');
-  burger.classList.toggle('active');
-
-  burgerIcon.setAttribute(
-    'href',
-    isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
-  );
-
-  if (isOpen) {
-    document.body.classList.add('is-open');
-  } else {
-    document.body.classList.remove('is-open');
-  }
-});
 
 function closeMenu() {
   menu.classList.remove('active');
@@ -30,49 +17,82 @@ function closeMenu() {
   if (burgerIcon) {
     burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
   }
-  document.body.style.overflow = '';
+  document.body.classList.remove('is-open');
 }
 
-closeBtn.addEventListener('click', closeMenu);
+burger.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('active');
+  burger.classList.toggle('active');
+  overlay.classList.toggle('active');
 
-menuLinks.forEach(link => {
+  if (burgerIcon) {
+    burgerIcon.setAttribute(
+      'href',
+      isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
+    );
+  }
+
+  if (isOpen) {
+    document.body.classList.add('is-open');
+  } else {
+    document.body.classList.remove('is-open');
+  }
+});
+
+allMenuLinks.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
 
 overlay.addEventListener('click', closeMenu);
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeMenu();
-    closeOrderModal();
-  }
-});
+if (closeBtn) {
+  closeBtn.addEventListener('click', closeMenu);
+}
 
-// ORDER MODAL
+// ORDER MODAL (Модалка замовлення)
 
-const openButtons = document.querySelectorAll('.header__btn, .buy_button');
+const openOrderButtons = document.querySelectorAll('.header__btn, .buy_button');
 const orderModal = document.querySelector('.order-modal');
 const closeModalBtn = document.querySelector('.modal-close-btn');
 
-openButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    orderModal.classList.add('active');
+function closeOrderModal() {
+  if (orderModal) {
+    orderModal.classList.remove('active');
+    if (!menu.classList.contains('active')) {
+      document.body.classList.remove('is-open');
+    }
+  }
+}
 
-    closeMenu();
+openOrderButtons.forEach(btn => {
+  btn.addEventListener('click', e => {
+    if (btn.getAttribute('href')?.startsWith('#')) {
+      return;
+    }
 
-    document.body.style.overflow = 'hidden';
+    if (orderModal) {
+      orderModal.classList.add('active');
+      closeMenu();
+      document.body.classList.add('is-open');
+    }
   });
 });
 
-function closeOrderModal() {
-  orderModal.classList.remove('active');
-  document.body.style.overflow = '';
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', closeOrderModal);
 }
 
-closeModalBtn.addEventListener('click', closeOrderModal);
+if (orderModal) {
+  orderModal.addEventListener('click', e => {
+    if (e.target === orderModal) {
+      closeOrderModal();
+    }
+  });
+}
 
-orderModal.addEventListener('click', e => {
-  if (e.target === orderModal) {
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeMenu();
     closeOrderModal();
   }
 });
