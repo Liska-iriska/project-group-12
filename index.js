@@ -16,7 +16,7 @@ import{S as P,N as M,P as A,K as j,a as O,i as B,r as x,A as R}from"./assets/ven
         </li>
     `).join("");K.feedbackList.innerHTML=t}W();function Q(){const e=document.querySelector(".accordion-container");e&&new R(e,{duration:400,showMultiple:!1,collapse:!0,elementClass:"ac",triggerClass:"ac-trigger",panelClass:"ac-panel"})}const m=document.querySelector(".filter-list"),$=["filter-all","filter-soft","filter-cupboard","filter-bed","filter-table","filter-chair","filter-kitchen","filter-childrens","filter-office","filter-rest","filter-bathroom","filter-outdoor","filter-decor"];async function X(e){if(!m)return console.error("Контейнер для фильтров не найден!");try{const t=await G();let r=`
       <li class="filter-item">
-        <button class="filter-btn ${$[0]} active" data-category-id="">Всі товари</button>
+        <button class="filter-btn ${$[0]} active-filter" data-category-id="">Всі товари</button>
       </li>
     `;t.forEach((s,o)=>{const i=$[o+1]||"";r+=`
         <li class="filter-item">
@@ -24,7 +24,7 @@ import{S as P,N as M,P as A,K as j,a as O,i as B,r as x,A as R}from"./assets/ven
             ${s.name}
           </button>
         </li>
-      `}),m.innerHTML=r;const n=m.querySelectorAll(".filter-btn");n.forEach(s=>{s.addEventListener("click",()=>{const o=s.dataset.categoryId;e&&e(o||void 0),n.forEach(i=>i.classList.remove("active")),s.classList.add("active")})})}catch(t){console.error("Ошибка загрузки фильтров:",t)}}const w=document.querySelector(".card-list"),f=document.querySelector(".more-btn");let b=[],l=0;const y=8;async function Y(){return w?(await q(void 0),f&&f.addEventListener("click",()=>te()),{setCategory:q}):console.error("Контейнер для карточек не найден!")}async function ee(e){return(await I(1,30,e)).furnitures}function te(){l+=y,C()}async function q(e){l=0;try{b=await ee(e),C()}catch(t){w.innerHTML="<p>Ошибка загрузки мебели</p>",console.error(t)}}function C(){const e=b.slice(l,l+y);w.innerHTML=e.map(t=>`
+      `}),m.innerHTML=r;const n=m.querySelectorAll(".filter-btn");n.forEach(s=>{s.addEventListener("click",()=>{const o=s.dataset.categoryId;e&&e(o||void 0),n.forEach(i=>i.classList.remove("active-filter")),s.classList.add("active-filter")})})}catch(t){console.error("Ошибка загрузки фильтров:",t)}}const w=document.querySelector(".card-list"),f=document.querySelector(".more-btn");let b=[],l=0;const y=8;async function Y(){return w?(await q(void 0),f&&f.addEventListener("click",()=>te()),{setCategory:q}):console.error("Контейнер для карточек не найден!")}async function ee(e){return(await I(1,30,e)).furnitures}function te(){l+=y,C()}async function q(e){l=0;try{b=await ee(e),C()}catch(t){w.innerHTML="<p>Ошибка загрузки мебели</p>",console.error(t)}}function C(){const e=b.slice(l,l+y);w.innerHTML=e.map(t=>`
       <li class="card-list-item">
         <img class="card-img" src="${t.images[0]||"placeholder.jpg"}" alt="${t.name}" />
         <div class="card-content">
@@ -33,8 +33,8 @@ import{S as P,N as M,P as A,K as j,a as O,i as B,r as x,A as R}from"./assets/ven
             ${t.color.map(r=>`<span class="color-dot" style="background-color: ${r}"></span>`).join("")}
           </div>
           <p class="card-price">${t.price} грн</p>
-          <button class="card-btn">Детальніше</button>
         </div>
+        <button class="card-btn">Детальніше</button>
       </li>
     `).join(""),f&&(f.style.display=l+y>=b.length?"none":"block")}Y().then(e=>{X(e.setCategory)});document.addEventListener("DOMContentLoaded",()=>{Q()});
 //# sourceMappingURL=index.js.map
