@@ -1,4 +1,4 @@
-import './header/header.js';
+import './js/header/header.js';
 import './js/render/feedback.js';
 import { initFaqAccordion } from './js/faq.js';
 import { initFilters } from './js/render/filters.js';
