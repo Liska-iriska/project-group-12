@@ -5,7 +5,7 @@ const burgerIcon = burger?.querySelector('use');
 const overlay = document.querySelector('.overlay');
 
 function closeMenu() {
-  // Перевіряємо, чи існує menu перед тим як щось з ним робити
+
   if (menu) {
     menu.classList.remove('active-burger');
   }
@@ -13,7 +13,7 @@ function closeMenu() {
   burger?.classList.remove('active-burger');
   overlay?.classList.remove('active-burger');
 
-  // Цей рядок тепер точно спрацює, бо помилка вище його не зупинить
+ 
   document.body.classList.remove('is-open-burger');
   document.body.style.overflow = '';
 
@@ -43,10 +43,10 @@ if (burger && menu) {
   });
 }
 
-// Використовуємо делегування, щоб не залежати від того, коли з'явилися посилання
+ посилання
 document.addEventListener('click', e => {
   const target = e.target;
-  // Якщо клікнули по посиланню всередині мобільного меню
+  
   if (
     target.closest('#mobileMenu a') ||
     target.closest('.overlay') ||
