@@ -42,11 +42,11 @@
   border: none;
 }
 
-.burger.active {
+.burger.active-burger {
   box-shadow: none;
 }
 
-body.is-open {
+body.is-open-burger {
   overflow: hidden;
 }
 
@@ -69,7 +69,7 @@ body.is-open {
 }
 
 /* Активний стан */
-.modal-menu.active {
+.modal-menu.active-burger {
   display: flex;
   align-items: center;
   transform: translateX(0);
@@ -192,7 +192,7 @@ body.is-open {
   transition: 0.3s;
 }
 
-.overlay.active {
+.overlay.active-burger {
   opacity: 1;
   visibility: visible;
 }
