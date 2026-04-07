@@ -17,7 +17,7 @@ export async function initFilters(setCategoryFn) {
 
     let html = `
       <li class="filter-item">
-        <button class="filter-btn ${filterClasses[0]} active" data-category-id="">Всі товари</button>
+        <button class="filter-btn ${filterClasses[0]} active-filter" data-category-id="">Всі товари</button>
       </li>
     `;
 
@@ -40,8 +40,8 @@ export async function initFilters(setCategoryFn) {
         const categoryId = btn.dataset.categoryId;
         if (setCategoryFn) setCategoryFn(categoryId || undefined);
 
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+        buttons.forEach(b => b.classList.remove("active-filter"));
+        btn.classList.add("active-filter");
       });
     });
 
