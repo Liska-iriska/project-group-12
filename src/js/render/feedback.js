@@ -39,7 +39,7 @@ function initSwiper() {
   const swiper = new Swiper('.feedback-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
-    spaceBetween: 16,
+    spaceBetween: 24,
     grabCursor: true,
     loop: false,
 
