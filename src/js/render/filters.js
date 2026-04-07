@@ -1,4 +1,5 @@
 import { getCategories } from "../api.js";
+import { showError } from "../utils/toast.js";
 
 const filterList = document.querySelector(".filter-list");
 
@@ -46,6 +47,6 @@ export async function initFilters(setCategoryFn) {
     });
 
   } catch (err) {
-    console.error("Ошибка загрузки фильтров:", err);
+    showError('Не вдалося завантажити категорії для фільтрів.');
   }
 }

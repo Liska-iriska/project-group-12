@@ -35,6 +35,16 @@ export async function getCategories() {
   }
 }
 
+export async function getFurnitureById(id) {
+  try {
+    const response = await api.get(`/furnitures/${id}`);
+    return response.data;
+  } catch (err) {
+    showError('Не вдалося завантажити інформацію.');
+    throw err;
+  }
+}
+
 export async function getFeedback(limit = 10) {
   try {
     const response = await api.get(`/feedbacks?limit=${limit}`);
