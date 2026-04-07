@@ -18,7 +18,7 @@ function closeMenu() {
   document.body.style.overflow = '';
 
   if (burgerIcon) {
-    burgerIcon.setAttribute('href', 'img/sprite.svg#menu');
+    burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
   }
 }
 
@@ -31,7 +31,7 @@ if (burger && menu) {
     if (burgerIcon) {
       burgerIcon.setAttribute(
         'href',
-        isOpen ? 'img/sprite.svg#close' : 'img/sprite.svg#menu'
+        isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
       );
     }
 
