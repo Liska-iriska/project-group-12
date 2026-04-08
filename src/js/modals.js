@@ -1,24 +1,50 @@
-// modal.js
-const modal = document.querySelector('.furniture-modal');
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
+import { showSuccess } from './utils/toast.js';
+const furnitureModal = document.querySelector('.furniture-modal');
+const orderModal = document.querySelector('.modal-overlay');
+const orderForm = document.querySelector('.order-form'); // Знаходимо форму
 
 export function initModals() {
-  if (!modal) return;
+  if (!furnitureModal || !orderModal) return;
 
-  // Використовуємо ДЕЛЕГУВАННЯ на рівні всього документа
   document.addEventListener('click', event => {
-    // Шукаємо, чи клікнули ми по кнопці "Детальніше" (навіть якщо вона щойно з'явилася)
-    const btn = event.target.closest('.card-btn');
+    const target = event.target;
 
-    if (btn) {
-      modal.style.display = 'flex';
+    if (target.closest('.card-btn') || target.closest('.popular-btn')) {
+      furnitureModal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-      return; // Виходимо, щоб не спрацював код нижче
     }
 
-    // Закриття модалки
-    if (event.target.closest('.close-btn') || event.target === modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'initial';
+    if (target.closest('.order-button-modal')) {
+      furnitureModal.style.display = 'none';
+      orderModal.style.display = 'flex';
+    }
+
+    const isCloseBtn =
+      target.closest('.close-btn') || target.closest('.modal-close-btn');
+    const isBackdrop = target === furnitureModal || target === orderModal;
+
+    if (isCloseBtn || isBackdrop) {
+      closeAllModals();
     }
   });
+
+  if (orderForm) {
+    orderForm.addEventListener('submit', event => {
+      event.preventDefault();
+
+      showSuccess('Заявку надіслано! Ми скоро зателефонуємо.');
+      closeAllModals();
+      orderForm.reset();
+    });
+  }
+}
+
+function closeAllModals() {
+  furnitureModal.style.display = 'none';
+  orderModal.style.display = 'none';
+  document.body.style.overflow = 'initial';
 }
