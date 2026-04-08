@@ -1,26 +1,14 @@
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('#mobileMenu');
-const closeBtn = document.querySelector('.modal-menu__close');
-const burgerIcon = burger?.querySelector('.use-header');
 const overlay = document.querySelector('.overlay');
-const isGitHubPages = window.location.hostname.includes('github.io');
-const spritePath = isGitHubPages
-  ? '/project-group-12/img/sprite.svg'
-  : 'img/sprite.svg';
-function closeMenu() {
-  if (menu) {
-    menu.classList.remove('active-burger');
-  }
 
+function closeMenu() {
+  menu?.classList.remove('active-burger');
   burger?.classList.remove('active-burger');
   overlay?.classList.remove('active-burger');
 
   document.body.classList.remove('is-open-burger');
   document.body.style.overflow = '';
-
-  if (burgerIcon) {
-    burgerIcon.setAttribute('href', `${spritePath}#menu`);
-  }
 }
 
 if (burger && menu) {
@@ -28,11 +16,6 @@ if (burger && menu) {
     const isOpen = menu.classList.toggle('active-burger');
     burger.classList.toggle('active-burger');
     overlay?.classList.toggle('active-burger');
-
-    if (burgerIcon) {
-      const iconId = isOpen ? 'close' : 'menu';
-      burgerIcon.setAttribute('href', `${spritePath}#${iconId}`);
-    }
 
     if (isOpen) {
       document.body.classList.add('is-open-burger');
