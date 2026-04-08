@@ -1,5 +1,6 @@
 import { getFurnitures, getFurnitureById } from '../api.js';
 import { openFurnitureModal } from './furniture-detail.js';
+import { showError } from '../utils/toast.js';
 
 const furnituresContainer = document.querySelector('.card-list');
 const moreBtn = document.querySelector('.more-btn');
@@ -22,11 +23,14 @@ export async function initGallery() {
 }
 
 async function fetchFurnitures(categoryId) {
-  const data = await getFurnitures(1, 30, categoryId);
-
-  console.log('API RESPONSE', data);
-
-  return data.furnitures;
+  try {
+    const data = await getFurnitures(1, 30, categoryId);
+    return data.furnitures;
+  } catch (err) {
+    console.error(err);
+    showError('Помилка завантаження меблів');
+    return [];
+  }
 }
 
 function renderNext() {
@@ -37,7 +41,6 @@ function renderNext() {
 export async function setCategory(categoryId) {
   currentCategoryId = categoryId;
   currentIndex = 0;
-
   furnituresContainer.innerHTML = '';
 
   try {
@@ -46,6 +49,7 @@ export async function setCategory(categoryId) {
   } catch (err) {
     furnituresContainer.innerHTML = '<p>Помилка завантаження меблів</p>';
     console.error(err);
+    showError('Не вдалося завантажити категорію меблів');
   }
 }
 
@@ -93,12 +97,9 @@ furnituresContainer.addEventListener('click', async e => {
 
   try {
     const fullProduct = await getFurnitureById(shortProduct._id);
-
-    console.log('FULL PRODUCT', fullProduct);
-
     openFurnitureModal(fullProduct);
   } catch (error) {
     console.error(error);
+    showError('Не вдалося завантажити дані меблів');
   }
 });
-
