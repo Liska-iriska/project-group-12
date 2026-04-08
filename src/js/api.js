@@ -3,7 +3,7 @@ import { showError } from './utils/toast.js';
 
 const BASE_URL = 'https://furniture-store-v2.b.goit.study/api';
 
-export async function getFurnitures(page = 1, limit = 30, category) {
+export async function getFurnitures(page = 1, limit = 8, category) {
   const params = { page, limit };
   if (category && category !== 'all') params.category = category;
 
