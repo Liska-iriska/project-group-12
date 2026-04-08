@@ -9,8 +9,7 @@ const PAGE_SIZE = 8;
 let currentCategoryId = undefined;
 
 export async function initGallery() {
-  if (!furnituresContainer)
-    return console.error('Контейнер для карточек не найден!');
+  if (!furnituresContainer) return console.error('Контейнер не знайдено!');
 
   await setCategory(undefined);
 
@@ -39,7 +38,7 @@ export async function setCategory(categoryId) {
     allFurnitures = await fetchFurnitures(categoryId);
     renderGallery();
   } catch (err) {
-    furnituresContainer.innerHTML = '<p>Ошибка загрузки мебели</p>';
+    furnituresContainer.innerHTML = '<p>Помилка завантаження меблів</p>';
     console.error(err);
   }
 }
@@ -50,23 +49,26 @@ export function renderGallery() {
     currentIndex + PAGE_SIZE
   );
 
-  furnituresContainer.innerHTML = itemsToShow
-    .map(
-      f => `
+  furnituresContainer.insertAdjacentHTML(
+    'beforeend',
+    itemsToShow
+      .map(
+        f => `
       <li class="card-list-item">
         <img class="card-img" src="${f.images[0] || 'placeholder.jpg'}" alt="${f.name}" />
         <div class="card-content">
           <h3 class="card-title">${f.name}</h3>
           <div class="card-colors">
-            ${f.color.map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join('')}
+            ${(Array.isArray(f.color) ? f.color : []).map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join('')}
           </div>
           <p class="card-price">${f.price} грн</p>
         </div>
         <button class="card-btn">Детальніше</button>
       </li>
     `
-    )
-    .join('');
+      )
+      .join('')
+  );
 
   if (moreBtn) {
     moreBtn.style.display =
