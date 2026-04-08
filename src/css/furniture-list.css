@@ -1,3 +1,57 @@
+.modal-furniture-rate {
+    --star-size: 30px;
+    --star-color: #ccc;
+    /* Колір порожніх зірок */
+    --star-background: #ffb400;
+    /* Колір заповнених зірок (золотистий) */
+
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    /* Зірочки в різних шрифтах виглядають інакше */
+    line-height: 1;
+}
+
+.modal-furniture-rate::after {
+    content: '★★★★★';
+    letter-spacing: 2px;
+
+    /* Створюємо градієнт: частина золота, частина сіра */
+    background: linear-gradient(90deg,
+            var(--star-background) var(--rating-percent),
+            var(--star-color) var(--rating-percent));
+
+    /* Маскуємо текст (зірочки) фоном */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Робимо самі символи прозорими, щоб було видно градієнт за ними */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.loader {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-top-color: #007bff;
+    /* цвет "вращающейся части" */
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 20px auto;
+}
+
+.loader.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .section-furniture-list {
   padding: 48px 0;
 }
@@ -172,20 +226,21 @@
 }
 
 .more-btn {
-  margin-top: 32px;
-  border-radius: 100px;
-  padding: 10px 24px;
-  width: 100%;
-  height: 46px;
-  border: none;
-  box-shadow:
-    0 1px 2px 0 rgba(8, 12, 9, 0.05),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(8, 12, 9, 0.15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-  background: rgba(107, 6, 9, 1);
-  color: #fff;
+    display: none;
+    margin-top: 32px;
+    border-radius: 100px;
+    padding: 10px 24px;
+    width: 100%;
+    height: 46px;
+    border: none;
+    box-shadow:
+        0 1px 2px 0 rgba(8, 12, 9, 0.05),
+        inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(8, 12, 9, 0.15),
+        inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+    background: rgba(107, 6, 9, 1);
+    color: #fff;
 }
 
 .more-btn:focus,

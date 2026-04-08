@@ -1,16 +1,36 @@
-import { getFurnitures } from '../api.js';
+import { getFurnitures, getFurnitureById } from '../api.js';
+import { openFurnitureModal } from './furniture-detail.js';
+import { showError } from '../utils/toast.js';
 
 const furnituresContainer = document.querySelector('.card-list');
 const moreBtn = document.querySelector('.more-btn');
+const loader = document.querySelector('.card-gallery .loader');
 
 let allFurnitures = [];
 let currentIndex = 0;
 const PAGE_SIZE = 8;
 let currentCategoryId = undefined;
 
+// ----------------- fetch с лоадером -----------------
+async function fetchFurnitures(categoryId) {
+  loader.classList.remove('hidden'); // показать лоадер
+  try {
+    const data = await getFurnitures(1, 30, categoryId);
+    return data.furnitures;
+  } catch (err) {
+    console.error(err);
+    showError('Не вдалося завантажити меблі');
+    return [];
+  } finally {
+    loader.classList.add('hidden'); // скрыть лоадер
+  }
+}
+
+// ----------------- инициализация галереи -----------------
 export async function initGallery() {
   if (!furnituresContainer) return console.error('Контейнер не знайдено!');
 
+  moreBtn.style.display = 'none'; // скрываем кнопку по умолчанию
   await setCategory(undefined);
 
   if (moreBtn) {
@@ -20,31 +40,30 @@ export async function initGallery() {
   return { setCategory };
 }
 
-async function fetchFurnitures(categoryId) {
-  const data = await getFurnitures(1, 30, categoryId);
-  return data.furnitures;
-}
-
+// ----------------- рендер следующей страницы -----------------
 function renderNext() {
   currentIndex += PAGE_SIZE;
   renderGallery();
 }
 
+// ----------------- установка категории -----------------
 export async function setCategory(categoryId) {
   currentCategoryId = categoryId;
   currentIndex = 0;
-
   furnituresContainer.innerHTML = '';
+  moreBtn.style.display = 'none'; // скрываем кнопку до загрузки
 
   try {
-    allFurnitures = await fetchFurnitures(categoryId);
+    allFurnitures = await fetchFurnitures(categoryId); // лоадер внутри
     renderGallery();
   } catch (err) {
     furnituresContainer.innerHTML = '<p>Помилка завантаження меблів</p>';
     console.error(err);
+    showError('Не вдалося завантажити категорію меблів');
   }
 }
 
+// ----------------- рендер галереи -----------------
 export function renderGallery() {
   const itemsToShow = allFurnitures.slice(
     currentIndex,
@@ -55,15 +74,15 @@ export function renderGallery() {
     'beforeend',
     itemsToShow
       .map(
-        f => `
+        product => `
       <li class="card-list-item">
-        <img class="card-img" src="${f.images[0] || 'placeholder.jpg'}" alt="${f.name}" />
+        <img class="card-img" src="${product.images[0] || 'placeholder.jpg'}" alt="${product.name}" />
         <div class="card-content">
-          <h3 class="card-title">${f.name}</h3>
+          <h3 class="card-title">${product.name}</h3>
           <div class="card-colors">
-            ${(Array.isArray(f.color) ? f.color : []).map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join('')}
+            ${(Array.isArray(product.color) ? product.color : []).map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join('')}
           </div>
-          <p class="card-price">${f.price} грн</p>
+          <p class="card-price">${product.price} грн</p>
         </div>
         <button class="card-btn">Детальніше</button>
       </li>
@@ -72,8 +91,31 @@ export function renderGallery() {
       .join('')
   );
 
+  // кнопка "Показати ще" появляется только если есть что показать
   if (moreBtn) {
     moreBtn.style.display =
       currentIndex + PAGE_SIZE >= allFurnitures.length ? 'none' : 'block';
   }
 }
+
+// ----------------- клик на "Детальніше" -----------------
+furnituresContainer.addEventListener('click', async e => {
+  const btn = e.target.closest('.card-btn');
+  if (!btn) return;
+
+  const card = btn.closest('.card-list-item');
+  const index = [...furnituresContainer.children].indexOf(card);
+
+  const shortProduct = allFurnitures[currentIndex + index];
+
+  try {
+    loader.classList.remove('hidden'); // показать лоадер при загрузке данных товара
+    const fullProduct = await getFurnitureById(shortProduct._id);
+    openFurnitureModal(fullProduct);
+  } catch (error) {
+    console.error(error);
+    showError('Не вдалося завантажити дані меблів');
+  } finally {
+    loader.classList.add('hidden'); // скрыть лоадер
+  }
+});
