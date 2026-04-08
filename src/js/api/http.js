@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { showLoader, hideLoader } from '../utils/loader';
-import { showError } from '../utils/toast';
+import { showLoader, hideLoader } from '../utils/loader.js';
+import { showError } from '../utils/toast.js';
 
 export const http = axios.create({
   baseURL: 'https://furniture-store-v2.b.goit.study/api',
@@ -10,7 +10,7 @@ let requestsCounter = 0;
 
 http.interceptors.request.use(
   config => {
-    requestsCounter += 1;
+    requestsCounter++;
     showLoader();
     return config;
   },
@@ -22,30 +22,13 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
   response => {
-    requestsCounter -= 1;
-
-    if (requestsCounter <= 0) {
-      requestsCounter = 0;
-      hideLoader();
-    }
-
+    if (--requestsCounter <= 0) hideLoader();
     return response;
   },
   error => {
-    requestsCounter -= 1;
-
-    if (requestsCounter <= 0) {
-      requestsCounter = 0;
-      hideLoader();
-    }
-
-    const message =
-      error?.response?.data?.message ||
-      error?.response?.data?.error ||
-      'Не вдалося виконати запит';
-
+    if (--requestsCounter <= 0) hideLoader();
+    const message = error?.response?.data?.message || 'Помилка запиту';
     showError(message);
-
     return Promise.reject(error);
   }
 );

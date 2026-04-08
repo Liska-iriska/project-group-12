@@ -1,46 +1,16 @@
-import axios from 'axios';
-import { showError } from './utils/toast.js';
-
-const BASE_URL = 'https://furniture-store-v2.b.goit.study/api';
-
-const api = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+import { http } from './api/http.js';
 
 export async function getFurnitures(page = 1, limit = 30, category) {
-  try {
-    let url = `/furnitures?page=${page}&limit=${limit}`;
-    if (category && category !== 'all') {
-      url += `&category=${encodeURIComponent(category)}`;
-    }
+  const params = { page, limit };
+  if (category && category !== 'all') params.category = category;
 
-    const response = await api.get(url);
-    return response.data;
-  } catch (err) {
-    showError('Не вдалося завантажити галерею карток.');
-    throw err;
-  }
+  // Axios сам перетворить params на рядок ?page=1&limit=30...
+  const { data } = await http.get('/furnitures', { params });
+  return data;
 }
 
-export async function getCategories() {
-  try {
-    const response = await api.get('/categories');
-    return response.data;
-  } catch (err) {
-    showError('Не вдалося завантажити категорії.');
-    throw err;
-  }
-}
+export const getCategories = () =>
+  http.get('/categories').then(res => res.data);
 
-export async function getFeedback(limit = 25) {
-  try {
-    const response = await api.get(`/feedbacks?limit=${limit}`);
-    return response.data;
-  } catch (err) {
-    showError('Не вдалося завантажити відгуки.');
-    throw err;
-  }
-}
+export const getFeedback = (limit = 25) =>
+  http.get(`/feedbacks?limit=${limit}`).then(res => res.data);
