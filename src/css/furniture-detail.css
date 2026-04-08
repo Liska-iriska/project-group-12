@@ -1,57 +1,61 @@
+/* ===== Overlay ===== */
 .furniture-modal {
   position: fixed;
-  display: none;
-  justify-content: center;
-  align-items: center;
   top: 0;
   left: 0;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.25);
   width: 100%;
   height: 100%;
-  transition:
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: visible;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
+/* ===== Container ===== */
 .furniture-modal-container {
   position: relative;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 335px;
-  min-height: 1155px;
-  border-radius: 8px;
-  box-shadow:
-    0 1px 1px 0 rgba(0, 0, 0, 0.14),
-    0 1px 3px 0 rgba(0, 0, 0, 0.12),
-    0 2px 1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  padding: 64px 20px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 90vh;
-  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
 }
 
+/* ===== Close button ===== */
 .close-btn {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   top: 16px;
   right: 16px;
-  background-color: transparent;
-  border: transparent;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
+.close-btn-icon {
+  fill: #333;
+  transition: 0.3s;
+}
+
+.close-btn:hover .close-btn-icon {
+  fill: #b30000;
+}
+
+/* ===== Gallery ===== */
 .furniture-gallery-modal {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 16px;
+}
+
+.big-image-sofa {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .small-images {
@@ -59,66 +63,71 @@
   gap: 16px;
 }
 
-.big-image-sofa {
-  width: 295px;
-  height: 297px;
-  border-radius: 8px;
+.small-image-sofa {
+  width: calc((100% - 16px) / 2);
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.small-image-sofa {
-  border-radius: 8px;
-  width: 139px;
-  height: 197px;
+/* ===== Content ===== */
+.content-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .furniture-title {
+  font-size: 28px;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 1.3;
-  letter-spacing: 0.01em;
-  color: #080c09;
-  margin-top: 24px;
+  margin-bottom: 4px;
 }
 
 .modal-furniture-category {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #080c09;
+  color: #888;
+  margin-bottom: 10px;
 }
 
 .modal-furniture-price {
-  font-weight: 700;
   font-size: 24px;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: #080c09;
-  margin-bottom: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
-.rating {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 24px;
+/* ===== Rating ===== */
+.modal-furniture-rate {
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  width: 120px;
+  height: 20px;
 }
 
+.modal-furniture-rate::before {
+  content: '★★★★★';
+  color: #ddd;
+}
+
+.modal-furniture-rate::after {
+  content: '★★★★★';
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--rating-percent);
+  overflow: hidden;
+}
+
+/* ===== Colors ===== */
 .furniture-color-text {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #080c09;
   margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .colors-container {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.color-option {
-  position: relative;
-  cursor: pointer;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .color-option input {
@@ -126,133 +135,66 @@
 }
 
 .color-swatch {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  display: inline-block;
-}
-
-.color-swatch.gray {
-  background-color: #c7c3bb;
-}
-
-.color-swatch.beige {
-  background-color: #c7aa80;
-}
-
-.color-swatch.black {
-  background-color: #201a19;
+  display: block;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .color-option input:checked + .color-swatch {
-  outline: 4px solid #838584;
+  border: 3px solid #000;
+  transform: scale(1.1);
 }
 
+/* ===== Description ===== */
 .modal-furniture-description {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #080c09;
-  width: 295px;
-  margin-bottom: 32px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
-.size-text {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #080c09;
+.modal-sizes {
   margin-bottom: 24px;
+  color: #333;
 }
 
+/* ===== Button ===== */
 .order-button-modal {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #ffffff;
-  width: 295px;
-  height: 46px;
-  border-radius: 100px;
-  padding: 10px 24px;
-  box-shadow:
-    0 1px 2px 0 var(--opacity-neutral-darkest-5),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 var(--opacity-white-5);
-  background-color: #6b0609;
+  background: linear-gradient(180deg, #b30000, #7a0000);
+  color: #fff;
   border: none;
+  border-radius: 25px;
+  padding: 14px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 250px;
 }
 
-.order-button-modal:hover,
-.order-button-modal:focus {
-  box-shadow:
-    0 1px 2px 0 var(--opacity-neutral-darkest-5),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 var(--opacity-white-5);
-  background-color: #6b0609;
-  opacity: 0.5;
+.order-button-modal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(179, 0, 0, 0.4);
 }
 
-@media screen and (min-width: 768px) {
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
   .furniture-modal-container {
-    width: 704px;
-    min-height: 1091px;
-    padding: 64px 32px 32px;
+    grid-template-columns: 1fr;
+    max-width: 600px;
   }
 
   .big-image-sofa {
-    width: 640px;
+    height: 250px;
   }
 
   .small-image-sofa {
-    width: 312px;
-  }
-
-  .modal-furniture-description {
-    width: 421px;
+    height: 100px;
   }
 
   .order-button-modal {
-    width: 310px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .furniture-modal-container {
-    width: 1090px;
-    min-height: 649px;
-    padding: 64px;
-    display: flex;
-    gap: 24px;
-  }
-
-  .furniture-gallery-modal {
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-
-  .big-image-sofa {
-    width: 580px;
-    height: 308px;
-  }
-
-  .small-image-sofa {
-    width: 282px;
-  }
-
-  .furniture-title {
-    font-size: 40px;
-    margin-top: 16px;
-  }
-
-  .modal-furniture-price {
-    font-size: 32px;
-  }
-
-  .modal-furniture-description {
-    width: 358px;
+    width: 100%;
   }
 }
