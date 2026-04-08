@@ -1,4 +1,5 @@
 import { showError, showSuccess } from '../utils/toast.js';
+import axios from 'axios';
 
 const modal = document.querySelector('.furniture-modal');
 const closeBtn = document.querySelector('#modal-close-btn');
@@ -120,13 +121,11 @@ orderForm?.addEventListener('submit', async e => {
   const modelId = orderForm.dataset.modelId;
   const color = orderForm.dataset.color;
 
-  // Проверка обязательных полей
   if (!name || !phone || !modelId || !color) {
     showError('Будь ласка, заповніть усі обов\'язкові поля!');
     return;
   }
 
-  // Проверка длины комментария
   if (comment && comment.length < 5) {
     showError('Коментар повинен бути щонайменше 5 символів!');
     return;
@@ -136,24 +135,20 @@ orderForm?.addEventListener('submit', async e => {
   console.log('Payload для отправки на сервер:', payload);
 
   try {
-    const response = await fetch('https://furniture-store-v2.b.goit.study/api/orders', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    const response = await axios.post(
+      'https://furniture-store-v2.b.goit.study/api/orders',
+      payload,
+      { headers: { 'Content-Type': 'application/json' } }
+    );
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      console.error('Server response:', errorData);
-      showError(errorData.message || 'Не вдалося відправити заявку');
-      return;
-    }
+    // Выводим ответ сервера в консоль
+    console.log('Ответ сервера:', response.data);
 
     showSuccess('Заявка успішно надіслана!');
     orderForm.reset();
     closeOrderModal();
   } catch (err) {
-    console.error(err);
-    showError('Сталася помилка при відправці заявки');
+    console.error('Ошибка при отправке заявки:', err.response?.data || err);
+    showError(err.response?.data?.message || 'Сталася помилка при відправці заявки');
   }
 });

@@ -84,7 +84,7 @@ export function renderGallery() {
           </div>
           <p class="card-price">${product.price} грн</p>
         </div>
-        <button class="card-btn">Детальніше</button>
+        <button class="card-btn" data-id="${product._id}">Детальніше</button>
       </li>
     `
       )
@@ -103,19 +103,14 @@ furnituresContainer.addEventListener('click', async e => {
   const btn = e.target.closest('.card-btn');
   if (!btn) return;
 
-  const card = btn.closest('.card-list-item');
-  const index = [...furnituresContainer.children].indexOf(card);
-
-  const shortProduct = allFurnitures[currentIndex + index];
+  const id = btn.dataset.id; // берём сразу ID
+  if (!id) return;
 
   try {
-    loader.classList.remove('hidden'); // показать лоадер при загрузке данных товара
-    const fullProduct = await getFurnitureById(shortProduct._id);
+    const fullProduct = await getFurnitureById(id);
     openFurnitureModal(fullProduct);
   } catch (error) {
     console.error(error);
     showError('Не вдалося завантажити дані меблів');
-  } finally {
-    loader.classList.add('hidden'); // скрыть лоадер
   }
 });
