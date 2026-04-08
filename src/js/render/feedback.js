@@ -41,16 +41,11 @@ function initSwiper() {
     slidesPerView: 1,
     spaceBetween: 24,
     grabCursor: true,
-    loop: false,
-
-    observer: true,
-    observeParents: true,
 
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
       dynamicBullets: true,
-      dynamicMainBullets: 3,
     },
     navigation: {
       prevEl: '.feedback-button-prev',
