@@ -8,7 +8,6 @@
   font-size: 36px;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  color: #080c09;
   margin-bottom: 24px;
 }
 
@@ -16,7 +15,6 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.6;
-  color: #080c09;
   margin-bottom: 80px;
 }
 
@@ -28,7 +26,6 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.6;
-  color: #080c09;
   margin-bottom: 24px;
 }
 
@@ -36,7 +33,6 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 1.6;
-  color: #080c09;
 }
 
 .feedback-nav {
@@ -73,8 +69,8 @@
 .feedback-button-prev,
 .feedback-button-next {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   border-radius: 50%;
   background-color: #f2f2f2;
   border: 1px solid rgba(8, 12, 9, 0.15);

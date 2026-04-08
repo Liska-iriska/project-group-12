@@ -3,7 +3,7 @@ const menu = document.querySelector('#mobileMenu');
 const closeBtn = document.querySelector('.modal-menu__close');
 const burgerIcon = burger?.querySelector('use');
 const overlay = document.querySelector('.overlay');
-
+const spritePath = 'img/sprite.svg';
 function closeMenu() {
   if (menu) {
     menu.classList.remove('active-burger');
@@ -16,7 +16,7 @@ function closeMenu() {
   document.body.style.overflow = '';
 
   if (burgerIcon) {
-    burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
+    burgerIcon.setAttribute('href', `${spritePath}#menu`);
   }
 }
 
@@ -27,10 +27,8 @@ if (burger && menu) {
     overlay?.classList.toggle('active-burger');
 
     if (burgerIcon) {
-      burgerIcon.setAttribute(
-        'href',
-        '/img/sprite.svg#' + (isOpen ? 'close' : 'menu')
-      );
+      const iconId = isOpen ? 'close' : 'menu';
+      burgerIcon.setAttribute('href', `${spritePath}#${iconId}`);
     }
 
     if (isOpen) {
