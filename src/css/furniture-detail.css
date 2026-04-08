@@ -5,43 +5,46 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: #00000040;
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  align-items: flex-start;
+  overflow-y: auto;
+  z-index: 9999;
+  padding: 40px 15px;
 }
 
 /* ===== Container ===== */
 .furniture-modal-container {
+  max-width: 335px;
+  padding: 20px;
+  padding-top: 64px;
+  border-radius: 8px;
+  background-color: #fff;
   position: relative;
-  background: #fff;
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 1100px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  /* top: 20px;*/
+  gap: 24px;
+  margin: auto;
 }
 
 /* ===== Close button ===== */
 .close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  background: transparent;
-  border: none;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
   cursor: pointer;
 }
 
 .close-btn-icon {
+  width: 32px; /* переконайся, що розмір визначений */
+  height: 32px;
   fill: #333;
   transition: 0.3s;
-}
-
-.close-btn:hover .close-btn-icon {
-  fill: #b30000;
+  display: block;
 }
 
 /* ===== Gallery ===== */
@@ -53,21 +56,24 @@
 
 .big-image-sofa {
   width: 100%;
-  height: 300px;
+  border-radius: 8px;
   object-fit: cover;
-  border-radius: 10px;
+  aspect-ratio: 295 / 297;
 }
 
 .small-images {
   display: flex;
-  gap: 16px;
+  gap: 8px;
+  /* width: 295px; ширина рівна великій картинці */
+  justify-content: space-between;
 }
 
-.small-image-sofa {
-  width: calc((100% - 16px) / 2);
-  height: 120px;
+.small-images img {
+  width: calc((100% - 8px) / 2); /* дві картинки з gap */
+  aspect-ratio: 139 / 197; /* співвідношення ширина/висота маленької картинки */
+  border-radius: 8px;
   object-fit: cover;
-  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* ===== Content ===== */
@@ -77,30 +83,30 @@
 }
 
 .furniture-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .modal-furniture-category {
-  color: #888;
-  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .modal-furniture-price {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 /* ===== Rating ===== */
 .modal-furniture-rate {
   display: inline-block;
-  font-size: 20px;
-  margin-bottom: 20px;
+  /* font-size: 20px; */
+  margin-bottom: 24px;
   position: relative;
-  width: 120px;
-  height: 20px;
+  width: 96px;
+  height: 15px;
 }
 
 .modal-furniture-rate::before {
@@ -127,7 +133,7 @@
 .colors-container {
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .color-option input {
@@ -151,9 +157,7 @@
 
 /* ===== Description ===== */
 .modal-furniture-description {
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .modal-sizes {
@@ -163,38 +167,102 @@
 
 /* ===== Button ===== */
 .order-button-modal {
-  background: linear-gradient(180deg, #b30000, #7a0000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+  border-radius: 100px;
+  padding-block: 10px;
+  padding-inline: 24px;
+  width: 295px;
+  height: 46px;
+  box-shadow:
+    0 1px 2px 0 rgba(8, 12, 9, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(8, 12, 9, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background: #6b0609;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
   color: #fff;
   border: none;
-  border-radius: 25px;
-  padding: 14px 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-  width: 250px;
+  margin-bottom: 44px;
 }
 
-.order-button-modal:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(179, 0, 0, 0.4);
+.order-button-modal:hover,
+.order-button-modal:focus {
+  opacity: 0.5;
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 900px) {
+
+@media screen and (min-width: 768px) {
   .furniture-modal-container {
-    grid-template-columns: 1fr;
-    max-width: 600px;
+    max-width: 704px;
   }
 
   .big-image-sofa {
-    height: 250px;
+    aspect-ratio: 640 / 297;
   }
 
-  .small-image-sofa {
-    height: 100px;
+  .small-images img {
+    width: calc((100% - 16px) / 2); /* дві картинки з gap */
+    aspect-ratio: 312 / 197;
+  }
+}
+
+.order-button-modal {
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 1440px) {
+  .furniture-modal-container {
+    max-width: 1090px;
+    padding: 64px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
   }
 
-  .order-button-modal {
+  /* ліва колонка */
+  .furniture-gallery-modal {
+    flex-direction: column;
+    width: 580px;
+    flex-shrink: 0;
+  }
+
+  /* права колонка */
+  .content-container {
+    flex: 1;
+  }
+
+  /* велика картинка */
+  .big-image-sofa {
     width: 100%;
+    aspect-ratio: 580 / 308;
+  }
+
+  /* маленькі */
+  .small-images {
+    gap: 16px;
+  }
+
+  .small-images img {
+    width: calc((100% - 16px) / 2);
+    aspect-ratio: 282 / 197;
+  }
+
+  .furniture-title {
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .modal-furniture-price {
+    font-size: 32px;
+    font-weight: 700;
   }
 }
