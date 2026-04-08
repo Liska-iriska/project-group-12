@@ -30,7 +30,7 @@ export async function initFilters(setCategoryFn) {
           c => `
         <li class="filter-item">
           <button class="filter-btn" data-category-id="${c._id}">
-            <!-- ВИПРАВЛЕНО: c._id як назва файлу і як id категорії для фільтрації -->
+            
             <img
               src="img/categories/${c._id}.jpg"
               srcset="
@@ -40,7 +40,7 @@ export async function initFilters(setCategoryFn) {
               alt="${c.name}"
               class="filter-img"
             />
-            <!-- ВИПРАВЛЕНО: c.name — реальна назва з API -->
+           
             <span>${c.name}</span>
           </button>
         </li>`
