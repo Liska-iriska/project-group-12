@@ -13,7 +13,7 @@ export async function initFilters(setCategoryFn) {
       <li class="filter-item">
         <button class="filter-btn active-filter" data-category-id="">
           <img 
-            src="/project-group-12/img/categories/all.jpg"
+            src="/img/categories/all.jpg"
             alt="Всі товари"
             class="filter-img"
           />
@@ -30,10 +30,10 @@ export async function initFilters(setCategoryFn) {
             data-category-id="${c._id}"
           >
             <img 
-              src="/project-group-12/img/categories/${c._id}.jpg"
+              src="/img/categories/${c._id}.jpg"
               srcset="
-                /project-group-12/img/categories/${c._id}.jpg 1x,
-                /project-group-12/img/categories/${c._id}@2x.jpg 2x
+                /img/categories/${c._id}.jpg 1x,
+                /img/categories/${c._id}@2x.jpg 2x
               "
               alt="${c.name}"
               class="filter-img"
