@@ -1,9 +1,9 @@
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('#mobileMenu');
 const closeBtn = document.querySelector('.modal-menu__close');
-const burgerIcon = burger?.querySelector('use');
+const burgerIcon = burger?.querySelector('.use-header');
 const overlay = document.querySelector('.overlay');
-const spritePath = 'img/sprite.svg';
+const spritePath = '/img/sprite.svg';
 function closeMenu() {
   if (menu) {
     menu.classList.remove('active-burger');
