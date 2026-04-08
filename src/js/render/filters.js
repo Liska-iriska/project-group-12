@@ -19,7 +19,7 @@ const filterClasses = [
 ];
 
 export async function initFilters(setCategoryFn) {
-  if (!filterList) return console.error('Контейнер для фильтров не найден!');
+  if (!filterList) return console.error('Контейнер для фільтрів не знайдено!');
 
   try {
     const categories = await getCategories();
@@ -54,6 +54,6 @@ export async function initFilters(setCategoryFn) {
       });
     });
   } catch (err) {
-    console.error('Ошибка загрузки фильтров:', err);
+    console.error('Помилка завантаження фільтрів:', err);
   }
 }

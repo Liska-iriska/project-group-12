@@ -4,7 +4,6 @@ export async function getFurnitures(page = 1, limit = 30, category) {
   const params = { page, limit };
   if (category && category !== 'all') params.category = category;
 
-  // Axios сам перетворить params на рядок ?page=1&limit=30...
   const { data } = await http.get('/furnitures', { params });
   return data;
 }
