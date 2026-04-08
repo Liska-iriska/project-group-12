@@ -3,7 +3,10 @@ const menu = document.querySelector('#mobileMenu');
 const closeBtn = document.querySelector('.modal-menu__close');
 const burgerIcon = burger?.querySelector('.use-header');
 const overlay = document.querySelector('.overlay');
-const spritePath = '/img/sprite.svg';
+const isGitHubPages = window.location.hostname.includes('github.io');
+const spritePath = isGitHubPages
+  ? '/project-group-12/img/sprite.svg'
+  : 'img/sprite.svg';
 function closeMenu() {
   if (menu) {
     menu.classList.remove('active-burger');
