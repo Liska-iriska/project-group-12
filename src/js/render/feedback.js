@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import raterJs from 'rater-js';
 
 import { getFeedback } from '../api.js';
+import { showLoader, hideLoader } from '../utils/loader.js';
 import { showError } from '../utils/toast.js';
 
 const refs = {
@@ -70,6 +71,7 @@ function initSwiper() {
 // Отримує відгуки з API та ініціалізує рендер, Swiper і зірковий рейтинг
 async function loadFeedback() {
   try {
+    showLoader('feedback');
     const data = await getFeedback();
 
     if (!data || !data.feedbacks) {
@@ -88,7 +90,9 @@ async function loadFeedback() {
     initSwiper();
     initStars();
   } catch (error) {
-    console.error('Feedback error:', error);
+    showError('Не вдалося завантажити відгуки');
+  } finally {
+    hideLoader('feedback');
   }
 }
 

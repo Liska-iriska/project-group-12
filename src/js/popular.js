@@ -1,5 +1,7 @@
 'use strict';
 
+import { showLoader, hideLoader } from './utils/loader.js';
+
 import axios from 'axios';
 
 import iziToast from 'izitoast';
@@ -36,32 +38,50 @@ async function getPopular() {
 const popularList = document.querySelector('.popular-list');
 
 const renderPopular = async () => {
-  const popularGoods = await getPopular();
+  try {
+    showLoader('popular');
 
-  if (popularGoods.length > 0) {
-    popularGoods.forEach(item => {
-      return popularList.insertAdjacentHTML(
-        'beforeend',
-        `<li class="swiper-slide popular-item">
-      <img class="popular-img" src="${item.images[0]}" alt="${item.name}" />
-      <div class="popular-info">
-        <h3 class="popular-subtitle">${item.name}</h3>
-        <div class="popular-colors">
-          ${item.color
-            .map(
-              color =>
-                `<span class="popular-color" style="background-color: ${color}; border: 1px solid ${color};"></span>`
-            )
-            .join('')}
+    const popularGoods = await getPopular();
+
+    if (popularGoods.length > 0) {
+      const markup = popularGoods
+        .map(
+          item => `
+      <li class="swiper-slide popular-item">
+        <img class="popular-img" src="${item.images[0]}" alt="${item.name}" />
+        <div class="popular-info">
+          <h3 class="popular-subtitle">${item.name}</h3>
+          <div class="popular-colors">
+            ${item.color
+              .map(
+                color =>
+                  `<span class="popular-color" style="background-color: ${color}; border: 1px solid ${color};"></span>`
+              )
+              .join('')}
+          </div>
+          <p class="popular-price">${item.price} грн</p>
         </div>
-        <p class="popular-price">${item.price} грн</p>
-      </div>
-      <button class="popular-btn" type="button" data-id="${item._id}">Детальніше</button>
-    </li>`
-      );
+        <button class="popular-btn" type="button" data-id="${item._id}">
+          Детальніше
+        </button>
+      </li>`
+        )
+        .join('');
+
+      popularList.innerHTML = markup;
+      swiper.update();
+    } else {
+      popularList.innerHTML =
+        '<p class="no-popular">Наразі немає доступу до популярних товарів</p>';
+    }
+  } catch (error) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Не вдалося завантажити популярні товари',
+      position: 'topRight',
     });
-  } else {
-    popularList.innerHTML = '<p class="no-popular">Наразі немає доступу до популярних товарів</p>';
+  } finally {
+    hideLoader('popular');
   }
 };
 
