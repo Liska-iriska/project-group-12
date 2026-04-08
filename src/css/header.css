@@ -93,19 +93,14 @@ body.is-open-burger {
   height: 34px;
 }
 
-.logo-icon1 {
-  width: 158px;
-  height: 34px;
-}
-
-.icon_close {
+.icon_burger {
   display: block;
   width: 32px;
   height: 32px;
 }
 
-.icon_burger {
-  display: block;
+.icon_burger_two {
+  display: none;
   width: 32px;
   height: 32px;
 }
@@ -114,6 +109,14 @@ body.is-open-burger {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.burger.active-burger .icon_burger {
+  display: none;
+}
+
+.burger.active-burger .icon_burger_two {
+  display: block;
 }
 
 /* ===== СПИСОК ===== */
