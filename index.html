@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/project-group-12/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-group-12/assets/vendor-BlfOi8zo.js">
     <link rel="stylesheet" crossorigin href="/project-group-12/assets/vendor-CsAmYNuR.css">
-    <link rel="stylesheet" crossorigin href="/project-group-12/assets/index-D2y-y_mB.css">
+    <link rel="stylesheet" crossorigin href="/project-group-12/assets/index-BLA1-D2q.css">
   </head>
   <body>
     <!-- HEADER -->
@@ -101,6 +101,7 @@
       <ul class="filter-list"></ul>
     </div>
     <div class="card-gallery">
+      <span class="loader hidden"></span>
       <ul class="card-list"></ul>
     </div>
     <button class="more-btn">Показати ще</button>
@@ -291,41 +292,9 @@
       </svg>
     </button>
 
-    <div class="furniture-gallery-modal" id="modal-gallery">
-      <img
-        class="big-image-sofa"
-        src="/project-group-12/assets/big-image-sofa-DIXFJI-n.jpg"
-        alt="Sofa Oslo"
-      />
-      <div class="small-images">
-        <img
-          class="small-image-sofa"
-          src="/project-group-12/assets/small-image-sofa(1)-BNEgxXuh.jpg"
-          alt="Sofa Oslo"
-        />
-        <img
-          class="small-image-sofa"
-          src="/project-group-12/assets/small-image-sofa(2)-CeRDUtss.jpg"
-          alt="Sofa Oslo"
-        />
-      </div>
-    </div>
+    <div class="furniture-gallery-modal" id="modal-gallery"></div>
 
-    <div class="content-container">
-      <h3 class="furniture-title" id="furniture-name"></h3>
-      <p class="modal-furniture-category" id="furniture-category"></p>
-      <p class="modal-furniture-price" id="furniture-price"></p>
-      <div class="rating" id="modal-rating"></div>
-      <p class="furniture-color-text">Колір</p>
-      <div class="colors-container" id="furniture-colors"></div>
-      <p class="modal-furniture-description" id="furniture-description"></p>
-      <p class="size-text" id="furniture-size-text">
-        Розміри: <span class="size" id="furniture-size"></span>
-      </p>
-      <button class="order-button-modal" id="modal-order-btn" type="submit">
-        Перейти до замовлення
-      </button>
-    </div>
+    <div class="content-container"></div>
   </div>
 </section>
 
