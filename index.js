@@ -45,7 +45,7 @@ import{i as w,a as L,S as C,N as F,P as H,K as V,r as z,A as D}from"./assets/ven
       <li class="filter-item">
         <button class="filter-btn active-filter" data-category-id="">
           <img 
-            src="/img/categories/all.jpg"
+            src="./img/categories/all.jpg"
             alt="Всі товари"
             class="filter-img"
           />
@@ -60,10 +60,10 @@ import{i as w,a as L,S as C,N as F,P as H,K as V,r as z,A as D}from"./assets/ven
             data-category-id="${s._id}"
           >
             <img 
-              src="/img/categories/${s._id}.jpg"
+              src="./img/categories/${s._id}.jpg"
               srcset="
-                /img/categories/${s._id}.jpg 1x,
-                /img/categories/${s._id}@2x.jpg 2x
+                ./img/categories/${s._id}.jpg 1x,
+                ./img/categories/${s._id}@2x.jpg 2x
               "
               alt="${s.name}"
               class="filter-img"
