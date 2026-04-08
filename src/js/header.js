@@ -16,7 +16,7 @@ function closeMenu() {
   document.body.style.overflow = '';
 
   if (burgerIcon) {
-    burgerIcon.setAttribute('href', 'img/sprite.svg#menu');
+    burgerIcon.setAttribute('href', '/img/sprite.svg#menu');
   }
 }
 

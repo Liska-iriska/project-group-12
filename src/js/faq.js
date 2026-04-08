@@ -15,3 +15,5 @@ export function initFaqAccordion() {
     });
   }
 }
+
+initFaqAccordion();

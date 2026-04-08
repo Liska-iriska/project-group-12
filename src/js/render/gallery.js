@@ -34,6 +34,8 @@ export async function setCategory(categoryId) {
   currentCategoryId = categoryId;
   currentIndex = 0;
 
+  furnituresContainer.innerHTML = '';
+
   try {
     allFurnitures = await fetchFurnitures(categoryId);
     renderGallery();
