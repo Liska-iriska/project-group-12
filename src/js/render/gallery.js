@@ -4,15 +4,33 @@ import { showError } from '../utils/toast.js';
 
 const furnituresContainer = document.querySelector('.card-list');
 const moreBtn = document.querySelector('.more-btn');
+const loader = document.querySelector('.card-gallery .loader');
 
 let allFurnitures = [];
 let currentIndex = 0;
 const PAGE_SIZE = 8;
 let currentCategoryId = undefined;
 
+// ----------------- fetch с лоадером -----------------
+async function fetchFurnitures(categoryId) {
+  loader.classList.remove('hidden'); // показать лоадер
+  try {
+    const data = await getFurnitures(1, 30, categoryId);
+    return data.furnitures;
+  } catch (err) {
+    console.error(err);
+    showError('Не вдалося завантажити меблі');
+    return [];
+  } finally {
+    loader.classList.add('hidden'); // скрыть лоадер
+  }
+}
+
+// ----------------- инициализация галереи -----------------
 export async function initGallery() {
   if (!furnituresContainer) return console.error('Контейнер не знайдено!');
 
+  moreBtn.style.display = 'none'; // скрываем кнопку по умолчанию
   await setCategory(undefined);
 
   if (moreBtn) {
@@ -22,29 +40,21 @@ export async function initGallery() {
   return { setCategory };
 }
 
-async function fetchFurnitures(categoryId) {
-  try {
-    const data = await getFurnitures(1, 30, categoryId);
-    return data.furnitures;
-  } catch (err) {
-    console.error(err);
-    showError('Помилка завантаження меблів');
-    return [];
-  }
-}
-
+// ----------------- рендер следующей страницы -----------------
 function renderNext() {
   currentIndex += PAGE_SIZE;
   renderGallery();
 }
 
+// ----------------- установка категории -----------------
 export async function setCategory(categoryId) {
   currentCategoryId = categoryId;
   currentIndex = 0;
   furnituresContainer.innerHTML = '';
+  moreBtn.style.display = 'none'; // скрываем кнопку до загрузки
 
   try {
-    allFurnitures = await fetchFurnitures(categoryId);
+    allFurnitures = await fetchFurnitures(categoryId); // лоадер внутри
     renderGallery();
   } catch (err) {
     furnituresContainer.innerHTML = '<p>Помилка завантаження меблів</p>';
@@ -53,6 +63,7 @@ export async function setCategory(categoryId) {
   }
 }
 
+// ----------------- рендер галереи -----------------
 export function renderGallery() {
   const itemsToShow = allFurnitures.slice(
     currentIndex,
@@ -80,12 +91,14 @@ export function renderGallery() {
       .join('')
   );
 
+  // кнопка "Показати ще" появляется только если есть что показать
   if (moreBtn) {
     moreBtn.style.display =
       currentIndex + PAGE_SIZE >= allFurnitures.length ? 'none' : 'block';
   }
 }
 
+// ----------------- клик на "Детальніше" -----------------
 furnituresContainer.addEventListener('click', async e => {
   const btn = e.target.closest('.card-btn');
   if (!btn) return;
@@ -96,10 +109,13 @@ furnituresContainer.addEventListener('click', async e => {
   const shortProduct = allFurnitures[currentIndex + index];
 
   try {
+    loader.classList.remove('hidden'); // показать лоадер при загрузке данных товара
     const fullProduct = await getFurnitureById(shortProduct._id);
     openFurnitureModal(fullProduct);
   } catch (error) {
     console.error(error);
     showError('Не вдалося завантажити дані меблів');
+  } finally {
+    loader.classList.add('hidden'); // скрыть лоадер
   }
 });
