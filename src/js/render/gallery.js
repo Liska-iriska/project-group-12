@@ -1,4 +1,5 @@
-import { getFurnitures } from '../api.js';
+import { getFurnitures, getFurnitureById } from '../api.js';
+import { openFurnitureModal } from './furniture-detail.js';
 
 const furnituresContainer = document.querySelector('.card-list');
 const moreBtn = document.querySelector('.more-btn');
@@ -22,6 +23,9 @@ export async function initGallery() {
 
 async function fetchFurnitures(categoryId) {
   const data = await getFurnitures(1, 30, categoryId);
+
+  console.log('API RESPONSE', data);
+
   return data.furnitures;
 }
 
@@ -55,15 +59,15 @@ export function renderGallery() {
     'beforeend',
     itemsToShow
       .map(
-        f => `
+        product => `
       <li class="card-list-item">
-        <img class="card-img" src="${f.images[0] || 'placeholder.jpg'}" alt="${f.name}" />
+        <img class="card-img" src="${product.images[0] || 'placeholder.jpg'}" alt="${product.name}" />
         <div class="card-content">
-          <h3 class="card-title">${f.name}</h3>
+          <h3 class="card-title">${product.name}</h3>
           <div class="card-colors">
-            ${(Array.isArray(f.color) ? f.color : []).map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join('')}
+            ${(Array.isArray(product.color) ? product.color : []).map(c => `<span class="color-dot" style="background-color: ${c}"></span>`).join('')}
           </div>
-          <p class="card-price">${f.price} грн</p>
+          <p class="card-price">${product.price} грн</p>
         </div>
         <button class="card-btn">Детальніше</button>
       </li>
@@ -77,3 +81,24 @@ export function renderGallery() {
       currentIndex + PAGE_SIZE >= allFurnitures.length ? 'none' : 'block';
   }
 }
+
+furnituresContainer.addEventListener('click', async e => {
+  const btn = e.target.closest('.card-btn');
+  if (!btn) return;
+
+  const card = btn.closest('.card-list-item');
+  const index = [...furnituresContainer.children].indexOf(card);
+
+  const shortProduct = allFurnitures[currentIndex + index];
+
+  try {
+    const fullProduct = await getFurnitureById(shortProduct._id);
+
+    console.log('FULL PRODUCT', fullProduct);
+
+    openFurnitureModal(fullProduct);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
