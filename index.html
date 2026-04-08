@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/project-group-12/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-group-12/assets/vendor-BlfOi8zo.js">
     <link rel="stylesheet" crossorigin href="/project-group-12/assets/vendor-CsAmYNuR.css">
-    <link rel="stylesheet" crossorigin href="/project-group-12/assets/index-DHfGGU4i.css">
+    <link rel="stylesheet" crossorigin href="/project-group-12/assets/index-GK6T3EQ5.css">
   </head>
   <body>
     <!-- HEADER -->
@@ -280,7 +280,7 @@
   </div>
 </section>
 
-      <section class="furniture-modal visually-hidden">
+      <section class="furniture-modal">
   <div class="furniture-modal-container">
     <button class="close-btn" id="modal-close-btn" type="button">
       <svg class="close-btn-icon" width="32" height="32">
@@ -289,22 +289,10 @@
     </button>
 
     <div class="furniture-gallery-modal" id="modal-gallery">
-      <img
-        class="big-image-sofa"
-        src="/project-group-12/assets/big-image-sofa-DIXFJI-n.jpg"
-        alt="Sofa Oslo"
-      />
+      <img class="big-image-sofa" src="/project-group-12/assets/big-image-sofa-DIXFJI-n.jpg" alt="Sofa Oslo" />
       <div class="small-images">
-        <img
-          class="small-image-sofa"
-          src="/project-group-12/assets/small-image-sofa(1)-BNEgxXuh.jpg"
-          alt="Sofa Oslo"
-        />
-        <img
-          class="small-image-sofa"
-          src="/project-group-12/assets/small-image-sofa(2)-CeRDUtss.jpg"
-          alt="Sofa Oslo"
-        />
+        <img class="small-image-sofa" src="/project-group-12/assets/small-image-sofa(1)-BNEgxXuh.jpg" alt="Sofa Oslo" />
+        <img class="small-image-sofa" src="/project-group-12/assets/small-image-sofa(2)-CeRDUtss.jpg" alt="Sofa Oslo" />
       </div>
     </div>
 
@@ -357,11 +345,10 @@
     </div>
   </div>
 </section>
-
-      <div class="modal-overlay visually-hidden" data-order-modal  aria-modal="true" aria-labelledby="orderModalTitle">
+      <div class="modal-overlay" data-order-modal aria-modal="true" aria-labelledby="orderModalTitle">
   <div class="order-modal">
 
-   <button  type="button" class="modal-close-btn" data-order-modal-close aria-label="Закрити">
+    <button type="button" class="modal-close-btn" data-order-modal-close aria-label="Закрити">
       <svg class="modal-close-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <use href="/project-group-12/assets/sprite-C-fsYuNJ.svg#close"></use>
       </svg>
@@ -373,41 +360,22 @@
 
       <div class="form-group">
         <label class="form-label" for="orderName">Ім'я <span class="form-required">*</span></label>
-        <input
-          class="form-input"
-          type="text"
-          id="orderName"
-          name="name"
-          placeholder="Введіть ваше ім'я"
-          required
-          autocomplete="name"
-        >
+        <input class="form-input" type="text" id="orderName" name="name" placeholder="Введіть ваше ім'я" required
+          autocomplete="name">
         <span class="form-error" id="nameError">Це поле обов'язкове</span>
       </div>
 
       <div class="form-group">
         <label class="form-label" for="orderPhone">Телефон <span class="form-required">*</span></label>
-        <input
-          class="form-input"
-          type="tel"
-          name="phone"
-          id="orderPhone"
-          placeholder="38 099 123 22 11"
-          required
-          autocomplete="tel"
-        >
+        <input class="form-input" type="tel" name="phone" id="orderPhone" placeholder="38 099 123 22 11" required
+          autocomplete="tel">
 
         <span class="form-error" id="phoneError">Введіть коректний номер</span>
       </div>
 
       <div class="form-group">
         <label class="form-label" for="orderComment">Коментар</label>
-        <textarea
-          class="form-textarea"
-          name="comment"
-          id="orderComment"
-          placeholder="Введіть ваш коментар"
-        ></textarea>
+        <textarea class="form-textarea" name="comment" id="orderComment" placeholder="Введіть ваш коментар"></textarea>
       </div>
 
       <button type="submit" class="submit-btn" id="submitOrderBtn">Надіслати заявку</button>
@@ -415,7 +383,6 @@
     </form>
   </div>
 </div>
-
     </main>
 
     <footer id="footer" class="footer">
