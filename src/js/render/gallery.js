@@ -51,10 +51,10 @@ export async function setCategory(categoryId) {
   currentCategoryId = categoryId;
   currentIndex = 0;
   furnituresContainer.innerHTML = '';
-  moreBtn.style.display = 'none'; // скрываем кнопку до загрузки
+  moreBtn.style.display = 'none';
 
   try {
-    allFurnitures = await fetchFurnitures(categoryId); // лоадер внутри
+    allFurnitures = await fetchFurnitures(categoryId);
     renderGallery();
   } catch (err) {
     furnituresContainer.innerHTML = '<p>Помилка завантаження меблів</p>';
