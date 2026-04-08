@@ -2,58 +2,67 @@ import { getCategories } from '../api.js';
 
 const filterList = document.querySelector('.filter-list');
 
-const filterClasses = [
-  'filter-all',
-  'filter-soft',
-  'filter-cupboard',
-  'filter-bed',
-  'filter-table',
-  'filter-chair',
-  'filter-kitchen',
-  'filter-childrens',
-  'filter-office',
-  'filter-rest',
-  'filter-bathroom',
-  'filter-outdoor',
-  'filter-decor',
-];
-
 export async function initFilters(setCategoryFn) {
-  if (!filterList) return console.error('Контейнер для фільтрів не знайдено!');
+  if (!filterList) return;
 
   try {
     const categories = await getCategories();
 
-    let html = `
+    const markup = `
       <li class="filter-item">
-        <button class="filter-btn ${filterClasses[0]} active-filter" data-category-id="">Всі товари</button>
+        <button class="filter-btn active-filter" data-category-id="">
+          <img 
+            src="/img/categories/all.jpg"
+            alt="Всі товари"
+            class="filter-img"
+          />
+          <span>Всі товари</span>
+        </button>
       </li>
-    `;
 
-    categories.forEach((c, index) => {
-      const className = filterClasses[index + 1] || '';
-      html += `
+      ${categories
+        .map(
+          c => `
         <li class="filter-item">
-          <button class="filter-btn ${className}" data-category-id="${c._id}">
-            ${c.name}
+          <button 
+            class="filter-btn"
+            data-category-id="${c._id}"
+          >
+            <img 
+              src="/img/categories/${c._id}.jpg"
+              srcset="
+                /img/categories/${c._id}.jpg 1x,
+                /img/categories/${c._id}@2x.jpg 2x
+              "
+              alt="${c.name}"
+              class="filter-img"
+            />
+            <span>${c.name}</span>
           </button>
         </li>
-      `;
-    });
+      `
+        )
+        .join('')}
+    `;
 
-    filterList.i = html;
+    filterList.innerHTML = markup;
 
-    const buttons = filterList.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const categoryId = btn.dataset.categoryId;
-        if (setCategoryFn) setCategoryFn(categoryId || undefined);
+    // делегирование событий
+    filterList.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
 
-        buttons.forEach(b => b.classList.remove('active-filter'));
-        btn.classList.add('active-filter');
-      });
+      const categoryId = btn.dataset.categoryId;
+
+      setCategoryFn?.(categoryId || undefined);
+
+      filterList
+        .querySelectorAll('.filter-btn')
+        .forEach(b => b.classList.remove('active-filter'));
+
+      btn.classList.add('active-filter');
     });
   } catch (err) {
-    console.error('Помилка завантаження фільтрів:', err);
+    console.error(err);
   }
 }

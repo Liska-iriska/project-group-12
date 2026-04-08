@@ -31,196 +31,61 @@
 }
 
 .filter-btn {
+    position: relative;
     border: none;
     border-radius: 8px;
     width: 159px;
     height: 122px;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+
     font-weight: 700;
     font-size: 18px;
     line-height: 1.4;
     letter-spacing: 0.01em;
     text-align: center;
     color: #fff;
+}
+
+.filter-btn span {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 0 10px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    z-index: 2;
 }
 
-.active-filter {
-    box-shadow: inset 0 0 0 8px #6B0609;
+.filter-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
-.filter-all {
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/1.jpg') ;
-    
-}
-@media (min-resolution: 2dppx) {
-    .filter-all {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/1.2x.jpg");
-    }
+.filter-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-
-.filter-soft {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/2.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-soft {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/2.2x.jpg");
-    }
+.active-filter::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 4px solid #6B0609;
+    border-radius: 8px;
+    z-index: 3;
+    pointer-events: none;
 }
 
-.filter-cupboard {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/3.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-cupboard {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/3.2x.jpg");
-    }
-}
-
-.filter-bed{
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/4.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-bed {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/4.2x.jpg");
-    }
-}
-
-.filter-table {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/5.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-table {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/5.2x.jpg");
-    }
-}
-
-.filter-chair {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/6.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-chair {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/6.2x.jpg");
-    }
-}
-
-.filter-kitchen {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/7.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-kitchen {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/7.2x.jpg");
-    }
-}
-
-.filter-childrens {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/8.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-childrens {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/8.2x.jpg");
-    }
-}
-
-.filter-office {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/9.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-office {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/9.2x.jpg");
-    }
-}
-
-.filter-rest {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/10.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-rest {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/10.2x.jpg");
-    }
-}
-
-.filter-bathroom {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/11.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-bathroom {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/11.2x.jpg");
-    }
-}
-
-.filter-outdoor {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/12.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-outdoor {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/12.2x.jpg");
-    }
-}
-
-.filter-decor {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('../img/categories/13.jpg');
-}
-@media (min-resolution: 2dppx) {
-    .filter-decor {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)),
-            url("../img/categories/13.2x.jpg");
-    }
-}
 
 .card-gallery {
     margin-top: 40px;
