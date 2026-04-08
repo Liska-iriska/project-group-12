@@ -5,7 +5,6 @@ const burgerIcon = burger?.querySelector('use');
 const overlay = document.querySelector('.overlay');
 
 function closeMenu() {
-
   if (menu) {
     menu.classList.remove('active-burger');
   }
@@ -13,7 +12,6 @@ function closeMenu() {
   burger?.classList.remove('active-burger');
   overlay?.classList.remove('active-burger');
 
- 
   document.body.classList.remove('is-open-burger');
   document.body.style.overflow = '';
 
@@ -31,7 +29,7 @@ if (burger && menu) {
     if (burgerIcon) {
       burgerIcon.setAttribute(
         'href',
-        isOpen ? '/img/sprite.svg#close' : '/img/sprite.svg#menu'
+        '/img/sprite.svg#' + (isOpen ? 'close' : 'menu')
       );
     }
 
@@ -43,10 +41,8 @@ if (burger && menu) {
   });
 }
 
- посилання
 document.addEventListener('click', e => {
   const target = e.target;
-  
   if (
     target.closest('#mobileMenu a') ||
     target.closest('.overlay') ||

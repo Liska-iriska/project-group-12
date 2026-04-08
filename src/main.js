@@ -1,4 +1,6 @@
 import './js/header.js';
+import './js/modals.js';
+import { initModals } from './js/modals.js';
 import './js/render/feedback.js';
 import './js/faq.js';
 import { initFilters } from './js/render/filters.js';
@@ -14,3 +16,5 @@ initGallery().then(galleryFunctions => {
 document.addEventListener('DOMContentLoaded', () => {
   initFurnitureList();
 });
+
+initModals();
