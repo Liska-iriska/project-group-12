@@ -1,6 +1,6 @@
 .feedback {
   padding: 64px 0;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .feedback-title {
@@ -43,10 +43,11 @@
 }
 
 #feedback-pagination {
-  position: relative;
-  left: 0;
-  bottom: 0;
+  position: static;
+  /* left: 0;
+  bottom: 0; */
   transform: none;
+  width: auto;
 }
 
 #feedback-pagination .swiper-pagination-bullet-active {
@@ -69,8 +70,9 @@
 .feedback-button-prev,
 .feedback-button-next {
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
+  position: static;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   background-color: #f2f2f2;
   border: 1px solid rgba(8, 12, 9, 0.15);
