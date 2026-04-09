@@ -47,7 +47,7 @@ function initSwiper() {
     observeParents: true,
 
     pagination: {
-      el: '.swiper-pagination',
+      el: '#feedback-pagination',
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 3,
