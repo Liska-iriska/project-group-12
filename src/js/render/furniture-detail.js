@@ -68,7 +68,7 @@ function renderInfo(product) {
     </div>
 
     <p class="modal-furniture-description">${product.description || ''}</p>
-    <p class="modal-sizes">${product.sizes || ''}</p>
+    <p class="modal-sizes">Розміри: ${product.sizes || ''}</p>
 
     <button class="order-button-modal" data-product-id="${product._id}">
       Перейти до замовлення

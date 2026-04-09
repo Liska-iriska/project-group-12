@@ -17,8 +17,7 @@
 /* ===== Container ===== */
 .furniture-modal-container {
   max-width: 335px;
-  padding: 20px;
-  padding-top: 64px;
+  padding: 64px 20px 44px;
   border-radius: 8px;
   background-color: #fff;
   position: relative;
@@ -33,10 +32,12 @@
 /* ===== Close button ===== */
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 16px;
+  right: 16px;
   font-size: 24px;
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 .close-btn-icon {
@@ -96,14 +97,14 @@
 .modal-furniture-price {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 /* ===== Rating ===== */
 .modal-furniture-rate {
   display: inline-block;
   /* font-size: 20px; */
-  margin-bottom: 24px;
+  padding-bottom: 54px;
   position: relative;
   width: 96px;
   height: 15px;
@@ -112,6 +113,7 @@
 .modal-furniture-rate::before {
   content: '★★★★★';
   color: #ddd;
+  letter-spacing: 2px;
 }
 
 .modal-furniture-rate::after {
@@ -126,14 +128,14 @@
 
 /* ===== Colors ===== */
 .furniture-color-text {
-  margin-bottom: 8px;
+  padding-bottom: 8px;
   font-weight: 500;
 }
 
 .colors-container {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 16px;
+  padding-bottom: 24px;
 }
 
 .color-option input {
@@ -141,8 +143,8 @@
 }
 
 .color-swatch {
-  width: 22px;
-  height: 22px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: block;
   border: 2px solid #ddd;
@@ -151,18 +153,18 @@
 }
 
 .color-option input:checked + .color-swatch {
-  border: 3px solid #000;
+  border: 3px solid #C7C3BB;
   transform: scale(1.1);
 }
 
 /* ===== Description ===== */
 .modal-furniture-description {
-  margin-bottom: 32px;
+  padding-bottom: 32px;
+  line-height: 160%;
 }
 
 .modal-sizes {
-  margin-bottom: 24px;
-  color: #333;
+  padding-bottom: 24px;
 }
 
 /* ===== Button ===== */
@@ -189,7 +191,6 @@
   line-height: 1.6;
   color: #fff;
   border: none;
-  margin-bottom: 44px;
 }
 
 .order-button-modal:hover,
@@ -202,6 +203,11 @@
 @media screen and (min-width: 768px) {
   .furniture-modal-container {
     max-width: 704px;
+    padding: 64px 32px 32px;
+  }
+
+  .modal-furniture-description {
+    width: 421px;
   }
 
   .big-image-sofa {
@@ -214,9 +220,6 @@
   }
 }
 
-.order-button-modal {
-  margin-bottom: 32px;
-}
 
 @media screen and (min-width: 1440px) {
   .furniture-modal-container {
@@ -227,6 +230,10 @@
     gap: 32px;
     align-items: flex-start;
   }
+
+    .modal-furniture-description {
+      width: 358px;
+    }
 
   /* ліва колонка */
   .furniture-gallery-modal {
