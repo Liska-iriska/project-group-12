@@ -1,30 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/project-group-12/assets/favicon-BbjRiI31.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Меблерія</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
-      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Raleway:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" crossorigin src="/project-group-12/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-group-12/assets/vendor-BlfOi8zo.js">
-    <link rel="stylesheet" crossorigin href="/project-group-12/assets/vendor-CsAmYNuR.css">
-    <link rel="stylesheet" crossorigin href="/project-group-12/assets/index-DavZa6eJ.css">
-  </head>
-  <body>
-    <!-- HEADER -->
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/project-group-12/assets/favicon-BbjRiI31.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Меблерія</title>
+  <meta name="description"
+    content="Відкрийте для себе колекцію сучасних меблів. Популярні товари, відгуки задоволених клієнтів та висока якість виконання.">
+  <meta name="keywords" content="меблі, купити меблі, сучасний інтер'єр, дивани, ліжка, популярні меблі">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Raleway:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" as="image" href="./img/hero/hero-bg.jpg" fetchpriority="high">
+  <script type="module" crossorigin src="/project-group-12/index.js"></script>
+  <link rel="modulepreload" crossorigin href="/project-group-12/assets/vendor-BlfOi8zo.js">
+  <link rel="stylesheet" crossorigin href="/project-group-12/assets/vendor-CsAmYNuR.css">
+  <link rel="stylesheet" crossorigin href="/project-group-12/assets/index-DavZa6eJ.css">
+</head>
+
+<body>
+  <!-- HEADER -->
 <header class="header" id="header">
   <div class="container header__container">
     <!-- Лого -->
@@ -76,22 +77,21 @@
 
 <div class="overlay"></div>
 
-    <main>
-      <section class="hero">
+  <main>
+    <section class="hero">
   <div class="container">
     <div class="hero-text">
       <h1 class="hero-title">Створіть свій ідеальний дім</h1>
-      <h3 class="hero-description">
+      <p class="hero-description">
         Відкрийте для себе колекцію стильних та комфортних меблів, які
         перетворять ваш простір. Наша продукція поєднує в собі елегантність та
         функціональність.
-      </h3>
+      </p>
       <a class="hero-link" href="#feedback">Що про нас думають</a>
     </div>
   </div>
 </section>
-
-      <section class="section-furniture-list" id="furniture-list">
+    <section class="section-furniture-list" id="furniture-list">
   <div class="container">
     <h2 class="title-furniture">Наші меблі</h2>
     <p class="second-title-furniture">
@@ -108,7 +108,7 @@
   </div>
 </section>
 
-      <section class="about" id="about">
+    <section class="about" id="about">
   <div class="container">
     <div class="about-content">
       <div class="about-text-wrapper">
@@ -139,7 +139,7 @@
   </div>
 </section>
 
-      <section class="section section-pop" id="popular">
+    <section class="section section-pop" id="popular">
   <div class="container">
     <h2 class="popular-title">Популярні товари</h2>
     <div class="swiper popular-swiper">
@@ -164,7 +164,7 @@
   </div>
 </section>
 
-      <section class="faq" id="faq">
+    <section class="faq" id="faq">
   <div class="container">
     <h2 class="faq-title">Часті питання</h2>
 
@@ -257,7 +257,7 @@
   </div>
 </section>
 
-      <section id="feedback" class="feedback">
+    <section id="feedback" class="feedback">
   <div class="container">
     <h2 class="feedback-title">Відгуки клієнтів</h2>
     <h3 class="feedback-text">
@@ -283,7 +283,7 @@
     </div>
   </div>
 </section>
-      <section class="furniture-modal" style="display: none">
+    <section class="furniture-modal" style="display: none">
   <div class="furniture-modal-container">
     <button class="close-btn" id="modal-close-btn" type="button">
       <svg class="close-btn-icon" width="32" height="32">
@@ -297,7 +297,7 @@
   </div>
 </section>
 
-      <div class="modal-overlay" data-order-modal aria-modal="true" aria-labelledby="orderModalTitle">
+    <div class="modal-overlay" data-order-modal aria-modal="true" aria-labelledby="orderModalTitle">
   <div class="order-modal">
 
     <button type="button" class="modal-close-btn" data-order-modal-close aria-label="Закрити">
@@ -335,9 +335,9 @@
     </form>
   </div>
 </div>
-    </main>
+  </main>
 
-    <footer id="footer" class="footer">
+  <footer id="footer" class="footer">
   <div class="container">
     <div class="footer-logo">
       <a href="./index.html">
@@ -400,5 +400,6 @@
 </footer>
 
 
-  </body>
+</body>
+
 </html>
