@@ -11,8 +11,10 @@ import { showError } from '../utils/toast.js';
 
 const refs = {
   feedbackList: document.querySelector('.js-feedback-list'),
-  btnPrev: document.querySelector('.swiper-button-prev'),
-  btnNext: document.querySelector('.swiper-button-next'),
+  btnPrev: document.querySelector('.feedback-button-prev'),
+  btnNext: document.querySelector('.feedback-button-next'),
+  pagination: document.querySelector('#feedback-pagination'),
+  navigation: document.querySelector('#feedback-navigation'),
 };
 
 // Округлює рейтинг до найближчого значення з кроком 0.5
@@ -42,10 +44,8 @@ function initSwiper() {
     spaceBetween: 16,
     grabCursor: true,
     loop: false,
-
     observer: true,
     observeParents: true,
-
     pagination: {
       el: '#feedback-pagination',
       clickable: true,
@@ -56,7 +56,6 @@ function initSwiper() {
       prevEl: '.feedback-button-prev',
       nextEl: '.feedback-button-next',
     },
-
     breakpoints: {
       768: {
         slidesPerGroup: 1,
@@ -77,23 +76,33 @@ async function loadFeedback() {
   try {
     const data = await getFeedback();
 
-    if (!data || !data.feedbacks) {
+    if (!data || !data.feedbacks || data.feedbacks.length === 0) {
       showError('Відгуки відсутні.');
+
+      // ховаємо навігацію та пагінацію
+      refs.pagination.style.display = 'none';
+      refs.navigation.style.display = 'none';
       return;
     }
 
     const feedbacks = data.feedbacks;
 
-    if (feedbacks.length === 0) {
-      showError('Відгуки відсутні.');
-      return;
-    }
-
     renderFeedbacks(feedbacks);
     initSwiper();
     initStars();
+
+    // показуємо кнопки, якщо вони були приховані раніше
+    refs.pagination.style.display = 'block';
+    refs.navigation.style.display = 'flex';
+
   } catch (error) {
     console.error('Feedback error:', error);
+
+    showError('Не вдалося завантажити відгуки.');
+
+    // ховаємо навігацію та пагінацію при помилці
+    refs.pagination.style.display = 'none';
+    refs.navigation.style.display = 'none';
   }
 }
 
@@ -109,7 +118,7 @@ function renderFeedbacks(feedbacks) {
             <p class="feedback-descr">${feedback.descr}</p>
             <p class="feedback-author">${feedback.name}</p>
         </li>
-    `;
+      `;
     })
     .join('');
 
