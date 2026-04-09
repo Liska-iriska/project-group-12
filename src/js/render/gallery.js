@@ -34,8 +34,10 @@ export async function initGallery() {
   await setCategory(undefined);
 
   if (moreBtn) {
-    moreBtn.addEventListener('click', () => renderNext());
-    moreBtn.blur();
+    moreBtn.addEventListener('click', e => {
+      renderNext();
+      e.currentTarget.blur();
+    });
   }
 
   return { setCategory };
