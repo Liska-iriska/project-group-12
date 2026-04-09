@@ -1,9 +1,9 @@
 import { showError, showSuccess } from '../utils/toast.js';
 import axios from 'axios';
 
-const modal = document.querySelector('.furniture-modal');
-const closeBtn = document.querySelector('#modal-close-btn');
-
+// ------------------- ELEMENTS -------------------
+const furnitureModal = document.querySelector('.furniture-modal');
+const furnitureCloseBtn = document.querySelector('#modal-close-btn');
 const galleryContainer = document.querySelector('.furniture-gallery-modal');
 const contentContainer = document.querySelector('.content-container');
 
@@ -11,26 +11,32 @@ const orderModal = document.querySelector('[data-order-modal]');
 const orderCloseBtn = document.querySelector('[data-order-modal-close]');
 const orderForm = document.querySelector('#orderForm');
 
-// ------------------- MODAL FURNITURE -------------------
+// ------------------- BODY SCROLL CONTROL -------------------
+function disableBodyScroll() {
+  document.body.classList.add('body-no-scroll');
+}
+function enableBodyScroll() {
+  document.body.classList.remove('body-no-scroll');
+}
 
+// ------------------- FURNITURE MODAL -------------------
 export function openFurnitureModal(product) {
   renderProductDetails(product);
-  modal.style.display = 'flex';
-  document.body.classList.add('body-no-scroll'); // блокируем скролл страницы
+  furnitureModal.style.display = 'flex';
+  disableBodyScroll();
 }
 
 export function closeFurnitureModal() {
-  modal.style.display = 'none';
-  document.body.classList.remove('body-no-scroll'); // разблокируем скролл страницы
+  furnitureModal.style.display = 'none';
+  enableBodyScroll();
 }
 
-closeBtn?.addEventListener('click', closeFurnitureModal);
-modal?.addEventListener('click', e => {
-  if (e.target === modal) closeFurnitureModal();
+furnitureCloseBtn?.addEventListener('click', closeFurnitureModal);
+furnitureModal?.addEventListener('click', e => {
+  if (e.target === furnitureModal) closeFurnitureModal();
 });
 
-// ------------------- PRODUCT DETAILS -------------------
-
+// ------------------- RENDER PRODUCT -------------------
 export function renderProductDetails(product) {
   renderImages(product);
   renderInfo(product);
@@ -49,7 +55,6 @@ function renderImages(product) {
     </div>
   `;
 
-  // переключение по клику на маленькие картинки
   const bigImage = galleryContainer.querySelector('.big-image-sofa');
   const smallImages = galleryContainer.querySelectorAll('.small-image-sofa');
   smallImages.forEach(img => {
@@ -86,7 +91,6 @@ function renderInfo(product) {
 }
 
 // ------------------- ORDER MODAL -------------------
-
 function setupOrderButton(product) {
   const orderBtn = contentContainer.querySelector('.order-button-modal');
   if (!orderBtn) return;
@@ -98,7 +102,7 @@ function setupOrderButton(product) {
     closeFurnitureModal();
 
     orderModal.style.display = 'flex';
-    document.body.classList.add('body-no-scroll');
+    disableBodyScroll();
 
     orderForm.dataset.modelId = product._id;
     orderForm.dataset.color = selectedColor;
@@ -112,11 +116,10 @@ orderModal?.addEventListener('click', e => {
 
 function closeOrderModal() {
   orderModal.style.display = 'none';
-  document.body.classList.remove('body-no-scroll');
+  enableBodyScroll();
 }
 
-// ------------------- SUBMIT FORM -------------------
-
+// ------------------- SUBMIT ORDER -------------------
 orderForm?.addEventListener('submit', async e => {
   e.preventDefault();
 
