@@ -1,17 +1,6 @@
 import { showError, showSuccess } from '../utils/toast.js';
 import axios from 'axios';
 
-window.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    if (furnitureModal.style.display === 'flex') {
-      closeFurnitureModal();
-    }
-    if (orderModal.style.display === 'flex') {
-      closeOrderModal();
-    }
-  }
-});
-
 // ------------------- ELEMENTS -------------------
 const furnitureModal = document.querySelector('.furniture-modal');
 const furnitureCloseBtn = document.querySelector('#modal-close-btn');
@@ -29,6 +18,7 @@ const orderLoader = document.querySelector('#orderLoader');
 function disableBodyScroll() {
   document.body.classList.add('body-no-scroll');
 }
+
 function enableBodyScroll() {
   document.body.classList.remove('body-no-scroll');
 }
@@ -45,10 +35,14 @@ export function closeFurnitureModal() {
   enableBodyScroll();
 }
 
+// Закрытие по кнопке
 furnitureCloseBtn?.addEventListener('click', closeFurnitureModal);
 
+// Закрытие по клику на оверлей
 furnitureModal?.addEventListener('click', e => {
-  if (e.target === furnitureModal) closeFurnitureModal();
+  if (!document.querySelector('.furniture-modal-container').contains(e.target)) {
+    closeFurnitureModal();
+  }
 });
 
 // ------------------- RENDER PRODUCT -------------------
@@ -68,8 +62,7 @@ function renderImages(product) {
     <div class="small-images">
       ${rest
         .map(
-          img =>
-            `<img src="${img}" alt="${product.name}" class="small-image-sofa" />`
+          img => `<img src="${img}" alt="${product.name}" class="small-image-sofa" />`
         )
         .join('')}
     </div>
@@ -101,9 +94,7 @@ function renderInfo(product) {
         .map(
           (c, i) => `
         <label class="color-option">
-          <input type="radio" name="color" value="${c}" ${
-            i === 0 ? 'checked' : ''
-          } />
+          <input type="radio" name="color" value="${c}" ${i === 0 ? 'checked' : ''} />
           <span class="color-swatch" style="background:${c}"></span>
         </label>
       `
@@ -126,13 +117,8 @@ function setupOrderButton(product) {
   if (!orderBtn) return;
 
   orderBtn.addEventListener('click', () => {
-    const selectedColorInput = contentContainer.querySelector(
-      'input[name="color"]:checked'
-    );
-
-    const selectedColor = selectedColorInput
-      ? selectedColorInput.value
-      : product.color[0];
+    const selectedColorInput = contentContainer.querySelector('input[name="color"]:checked');
+    const selectedColor = selectedColorInput ? selectedColorInput.value : product.color[0];
 
     closeFurnitureModal();
 
@@ -144,10 +130,14 @@ function setupOrderButton(product) {
   });
 }
 
+// Кнопка закрытия
 orderCloseBtn?.addEventListener('click', closeOrderModal);
 
+// Закрытие по клику на оверлей
 orderModal?.addEventListener('click', e => {
-  if (e.target === orderModal) closeOrderModal();
+  if (!orderForm.contains(e.target)) {
+    closeOrderModal();
+  }
 });
 
 function closeOrderModal() {
@@ -160,9 +150,7 @@ orderForm?.addEventListener('submit', async e => {
   e.preventDefault();
 
   const name = orderForm.querySelector('#orderName').value.trim();
-  const phone = orderForm
-    .querySelector('#orderPhone')
-    .value.replace(/\D/g, '');
+  const phone = orderForm.querySelector('#orderPhone').value.replace(/\D/g, '');
   const comment = orderForm.querySelector('#orderComment').value.trim();
   const modelId = orderForm.dataset.modelId;
   const color = orderForm.dataset.color;
@@ -177,15 +165,7 @@ orderForm?.addEventListener('submit', async e => {
     return;
   }
 
-  const payload = {
-    name,
-    phone,
-    modelId,
-    color,
-    ...(comment && { comment }),
-  };
-
-  console.log('Payload для отправки на сервер:', payload);
+  const payload = { name, phone, modelId, color, ...(comment && { comment }) };
 
   submitBtn.style.display = 'none';
   orderLoader.classList.remove('hidden');
@@ -197,19 +177,22 @@ orderForm?.addEventListener('submit', async e => {
       { headers: { 'Content-Type': 'application/json' } }
     );
 
-    console.log('Ответ сервера:', response.data);
-
     showSuccess('Заявка успішно надіслана!');
     orderForm.reset();
     closeOrderModal();
   } catch (err) {
-    console.error('Ошибка при отправке заявки:', err.response?.data || err);
-
-    showError(
-      err.response?.data?.message || 'Сталася помилка при відправці заявки'
-    );
+    console.error(err.response?.data || err);
+    showError(err.response?.data?.message || 'Сталася помилка при відправці заявки');
   } finally {
     submitBtn.style.display = 'block';
     orderLoader.classList.add('hidden');
+  }
+});
+
+// ------------------- ESC KEY -------------------
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (furnitureModal.style.display === 'flex') closeFurnitureModal();
+    if (orderModal.style.display === 'flex') closeOrderModal();
   }
 });

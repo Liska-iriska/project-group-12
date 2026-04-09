@@ -196,6 +196,7 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 1.6;
+  padding-bottom: 16px;
 }
 
 .card-btn {
@@ -286,6 +287,10 @@
     aspect-ratio: 340 / 281;
     width: 340px;
     height: 281px;
+  }
+
+  .card-price {
+    padding-bottom: 0;
   }
 
   .card-btn {
