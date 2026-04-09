@@ -1,55 +1,57 @@
 .modal-furniture-rate {
-    --star-size: 30px;
-    --star-color: #ccc;
-    /* Колір порожніх зірок */
-    --star-background: #ffb400;
-    /* Колір заповнених зірок (золотистий) */
+  --star-size: 30px;
+  --star-color: #ccc;
+  /* Колір порожніх зірок */
+  --star-background: #ffb400;
+  /* Колір заповнених зірок (золотистий) */
 
-    display: inline-block;
-    font-size: var(--star-size);
-    font-family: Times;
-    /* Зірочки в різних шрифтах виглядають інакше */
-    line-height: 1;
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  /* Зірочки в різних шрифтах виглядають інакше */
+  line-height: 1;
 }
 
 .modal-furniture-rate::after {
-    content: '★★★★★';
-    letter-spacing: 2px;
+  content: '★★★★★';
+  letter-spacing: 2px;
 
-    /* Створюємо градієнт: частина золота, частина сіра */
-    background: linear-gradient(90deg,
-            var(--star-background) var(--rating-percent),
-            var(--star-color) var(--rating-percent));
+  /* Створюємо градієнт: частина золота, частина сіра */
+  background: linear-gradient(
+    90deg,
+    var(--star-background) var(--rating-percent),
+    var(--star-color) var(--rating-percent)
+  );
 
-    /* Маскуємо текст (зірочки) фоном */
-    -webkit-background-clip: text;
-    background-clip: text;
+  /* Маскуємо текст (зірочки) фоном */
+  -webkit-background-clip: text;
+  background-clip: text;
 
-    /* Робимо самі символи прозорими, щоб було видно градієнт за ними */
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  /* Робимо самі символи прозорими, щоб було видно градієнт за ними */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .loader {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border: 4px solid #ccc;
-    border-top-color: #007bff;
-    /* цвет "вращающейся части" */
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 20px auto;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top-color: #007bff;
+  /* цвет "вращающейся части" */
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
 }
 
 .loader.hidden {
-    display: none;
+  display: none;
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .section-furniture-list {
@@ -156,7 +158,6 @@
 .card-img {
   border-radius: 8px;
   width: 100%;
-  height: 277px;
   object-fit: cover;
   display: block;
   margin-bottom: 8px;
@@ -214,7 +215,6 @@
   transition: all 0.2s ease;
 }
 
-
 .card-btn:hover,
 .card-btn:focus {
   background: rgba(8, 12, 9, 0.05);
@@ -248,7 +248,6 @@
     inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.2s ease;
-  
 }
 
 .more-btn:hover,

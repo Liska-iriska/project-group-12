@@ -76,7 +76,11 @@ export function renderGallery() {
       .map(
         product => `
       <li class="card-list-item">
-        <img class="card-img" src="${product.images[0] || 'placeholder.jpg'}" alt="${product.name}" />
+        <img class="card-img"
+        width="335" 
+        height="277" 
+        loading="lazy"
+        src="${product.images[0] || 'placeholder.jpg'}" alt="${product.name}" />
         <div class="card-content">
           <h3 class="card-title">${product.name}</h3>
           <div class="card-colors">
