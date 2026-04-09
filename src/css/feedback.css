@@ -11,6 +11,10 @@
   margin-bottom: 24px;
 }
 
+.modal-furniture-rate {
+  --star-background: #080c09;
+}
+
 .feedback-text {
   font-weight: 400;
   font-size: 18px;
