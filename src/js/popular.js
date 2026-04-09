@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { openFurnitureModal } from './render/furniture-detail.js'; 
+import { openFurnitureModal } from './render/furniture-detail.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -41,7 +41,11 @@ const renderPopular = async () => {
       popularList.insertAdjacentHTML(
         'beforeend',
         `<li class="swiper-slide popular-item">
-          <img class="popular-img" src="${item.images[0]}" alt="${item.name}" />
+          <img class="popular-img"
+          width="280" 
+          height="232" 
+          loading="lazy"
+          src="${item.images[0]}" alt="${item.name}" />
           <div class="popular-info">
             <h3 class="popular-subtitle">${item.name}</h3>
             <div class="popular-colors">
@@ -66,7 +70,9 @@ const renderPopular = async () => {
 
       const id = btn.dataset.id;
       try {
-        const response = await axios.get(`https://furniture-store-v2.b.goit.study/api/furnitures/${id}`);
+        const response = await axios.get(
+          `https://furniture-store-v2.b.goit.study/api/furnitures/${id}`
+        );
         const product = response.data;
 
         openFurnitureModal(product);
@@ -81,7 +87,8 @@ const renderPopular = async () => {
       }
     });
   } else {
-    popularList.innerHTML = '<p class="no-popular">Наразі немає доступу до популярних товарів</p>';
+    popularList.innerHTML =
+      '<p class="no-popular">Наразі немає доступу до популярних товарів</p>';
   }
 };
 
