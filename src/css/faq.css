@@ -14,7 +14,8 @@
 .ac-icon {
   fill: #2e2f42;
   transition: transform 0.3s ease;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
+  border-radius: 50%;
 }
 
 .ac.is-active .ac-icon {
