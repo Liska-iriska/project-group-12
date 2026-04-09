@@ -1,3 +1,6 @@
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('#mobileMenu');
 const overlay = document.querySelector('.overlay');
@@ -44,7 +47,7 @@ if (burger && menu) {
 document.addEventListener('click', e => {
   const target = e.target;
   if (
-    target.closest('#mobileMenu a') || 
+    target.closest('#mobileMenu a') ||
     target.closest('.overlay') ||
     target.closest('.modal-menu__close')
   ) {

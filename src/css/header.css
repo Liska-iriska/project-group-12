@@ -124,7 +124,7 @@ body.is-open-burger {
   width: auto;
   list-style: none;
   padding: 0;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -198,27 +198,29 @@ body.is-open-burger {
 @media (min-width: 768px) {
   /* MODAL */
   .modal-menu {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 249px;
-      height: 396px;
-      padding: 24px 32px;
-      background: #fff;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  
-      transform: translateX(100%);
-      opacity: 0;
-      visibility: hidden;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      z-index: 10;
-    }
-  
-    .modal-menu.active-burger {
-      transform: translateX(0);
-      opacity: 1;
-      visibility: visible;
-    }
+    position: absolute;
+    /* top: 100%;
+      right: 0; */
+    width: 249px;
+    height: 396px;
+    padding: 24px 32px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    right: 32px;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    z-index: 10;
+  }
+
+  .modal-menu.active-burger {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
   /* список */
   .modal-menu__list {
     margin-left: auto;
