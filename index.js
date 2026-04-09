@@ -26,7 +26,11 @@ import{i as L,a as w,S as C,N as F,P as H,K,r as U,A as J}from"./assets/vendor-B
       Перейти до замовлення
     </button>
   `}function Y(e){const t=E.querySelector(".order-button-modal");t&&t.addEventListener("click",()=>{const r=E.querySelector('input[name="color"]:checked'),s=r?r.value:e.color[0];A(),p.style.display="flex",z(),c.dataset.modelId=e._id,c.dataset.color=s})}k==null||k.addEventListener("click",I);p==null||p.addEventListener("click",e=>{e.target===p&&I()});function I(){p.style.display="none",G()}c==null||c.addEventListener("submit",async e=>{var R,T,_;e.preventDefault();const t=c.querySelector("#orderName").value.trim(),r=c.querySelector("#orderPhone").value.replace(/\D/g,""),s=c.querySelector("#orderComment").value.trim(),n=c.dataset.modelId,o=c.dataset.color;if(!t||!r||!n||!o){a("Будь ласка, заповніть усі обов'язкові поля!");return}if(s&&s.length<5){a("Коментар повинен бути щонайменше 5 символів!");return}const i={name:t,phone:r,modelId:n,color:o,comment:s};console.log("Payload для отправки на сервер:",i);try{const f=await w.post("https://furniture-store-v2.b.goit.study/api/orders",i,{headers:{"Content-Type":"application/json"}});console.log("Ответ сервера:",f.data),W("Заявка успішно надіслана!"),c.reset(),I()}catch(f){console.error("Ошибка при отправке заявки:",((R=f.response)==null?void 0:R.data)||f),a(((_=(T=f.response)==null?void 0:T.data)==null?void 0:_.message)||"Сталася помилка при відправці заявки")}});async function ee(){const e=new URLSearchParams({limit:30,type:"popular"}),t="https://furniture-store-v2.b.goit.study/api/furnitures";try{return(await w(t,{params:e})).data.furnitures}catch(r){return L.error({title:"Помилка",message:`Не вдалося завантажити популярні товари: ${r.message}`,position:"topRight",timeout:4e3}),[]}}const q=document.querySelector(".popular-list"),te=async()=>{const e=await ee();e.length>0?(e.forEach(t=>{q.insertAdjacentHTML("beforeend",`<li class="swiper-slide popular-item">
-          <img class="popular-img" src="${t.images[0]}" alt="${t.name}" />
+          <img class="popular-img"
+          width="280" 
+          height="232" 
+          loading="lazy"
+          src="${t.images[0]}" alt="${t.name}" />
           <div class="popular-info">
             <h3 class="popular-subtitle">${t.name}</h3>
             <div class="popular-colors">
