@@ -20,7 +20,7 @@ import{i as w,a as L,S as C,N,P as F,K as V,r as z,A as D}from"./assets/vendor-B
     </div>
 
     <p class="modal-furniture-description">${e.description||""}</p>
-    <p class="modal-sizes">${e.sizes||""}</p>
+    <p class="modal-sizes">Розміри: ${e.sizes||""}</p>
 
     <button class="order-button-modal" data-product-id="${e._id}">
       Перейти до замовлення
