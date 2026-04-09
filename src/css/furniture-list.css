@@ -156,6 +156,7 @@
 }
 
 .card-img {
+  aspect-ratio: 335 / 277;
   border-radius: 8px;
   width: 100%;
   object-fit: cover;
@@ -280,6 +281,7 @@
   }
 
   .card-img {
+    aspect-ratio: 340 / 281;
     width: 340px;
     height: 281px;
   }
@@ -314,6 +316,7 @@
   }
 
   .card-img {
+    aspect-ratio: 310 / 256;
     width: 310px;
     height: 256px;
   }

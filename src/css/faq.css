@@ -97,7 +97,11 @@
 .ac-trigger {
   height: 98px;
 }
-#faq-item-1 .ac-panel .ac-text {
+#faq-item-1 .ac-panel .ac-text,
+#faq-item-2 .ac-panel .ac-text,
+#faq-item-3 .ac-panel .ac-text,
+#faq-item-4 .ac-panel .ac-text,
+#faq-item-5 .ac-panel .ac-text {
   padding: 0;
   margin-bottom: 24px;
 }
