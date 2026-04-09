@@ -9,7 +9,6 @@
 }
 
 .header__container {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -201,12 +200,11 @@ body.is-open-burger {
     position: absolute;
     /* top: 100%;
       right: 0; */
-    width: 249px;
+    width: calc(50vw - 135px);
+    padding: 24px calc(50vw - 352px) 24px 32px;
     height: 396px;
-    padding: 24px 32px;
     background: #fff;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    right: 32px;
     transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
