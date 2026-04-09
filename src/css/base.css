@@ -21,6 +21,18 @@ main {
   flex-grow: 1;
 }
 
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+div:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+:focus-visible {
+  border-radius: 8px;
+  outline: 2px solid rgba(107, 6, 9, 1);
+  outline-offset: 2px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

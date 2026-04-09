@@ -1,6 +1,17 @@
 import { showError, showSuccess } from '../utils/toast.js';
 import axios from 'axios';
 
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (furnitureModal.style.display === 'flex') {
+      closeFurnitureModal();
+    }
+    if (orderModal.style.display === 'flex') {
+      closeOrderModal();
+    }
+  }
+});
+
 // ------------------- ELEMENTS -------------------
 const furnitureModal = document.querySelector('.furniture-modal');
 const furnitureCloseBtn = document.querySelector('#modal-close-btn');
@@ -73,12 +84,16 @@ function renderInfo(product) {
 
     <p class="furniture-color-text">Колір</p>
     <div class="colors-container">
-      ${product.color.map((c, i) => `
+      ${product.color
+        .map(
+          (c, i) => `
         <label class="color-option">
           <input type="radio" name="color" value="${c}" ${i === 0 ? 'checked' : ''} />
           <span class="color-swatch" style="background:${c}"></span>
         </label>
-      `).join('')}
+      `
+        )
+        .join('')}
     </div>
 
     <p class="modal-furniture-description">${product.description || ''}</p>
@@ -96,8 +111,12 @@ function setupOrderButton(product) {
   if (!orderBtn) return;
 
   orderBtn.addEventListener('click', () => {
-    const selectedColorInput = contentContainer.querySelector('input[name="color"]:checked');
-    const selectedColor = selectedColorInput ? selectedColorInput.value : product.color[0];
+    const selectedColorInput = contentContainer.querySelector(
+      'input[name="color"]:checked'
+    );
+    const selectedColor = selectedColorInput
+      ? selectedColorInput.value
+      : product.color[0];
 
     closeFurnitureModal();
 
@@ -130,7 +149,7 @@ orderForm?.addEventListener('submit', async e => {
   const color = orderForm.dataset.color;
 
   if (!name || !phone || !modelId || !color) {
-    showError('Будь ласка, заповніть усі обов\'язкові поля!');
+    showError("Будь ласка, заповніть усі обов'язкові поля!");
     return;
   }
 
@@ -156,6 +175,8 @@ orderForm?.addEventListener('submit', async e => {
     closeOrderModal();
   } catch (err) {
     console.error('Ошибка при отправке заявки:', err.response?.data || err);
-    showError(err.response?.data?.message || 'Сталася помилка при відправці заявки');
+    showError(
+      err.response?.data?.message || 'Сталася помилка при відправці заявки'
+    );
   }
 });
