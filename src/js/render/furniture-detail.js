@@ -16,12 +16,12 @@ const orderForm = document.querySelector('#orderForm');
 export function openFurnitureModal(product) {
   renderProductDetails(product);
   modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('body-no-scroll'); // блокируем скролл страницы
 }
 
 export function closeFurnitureModal() {
   modal.style.display = 'none';
-  document.body.style.overflow = '';
+  document.body.classList.remove('body-no-scroll'); // разблокируем скролл страницы
 }
 
 closeBtn?.addEventListener('click', closeFurnitureModal);
@@ -34,7 +34,7 @@ modal?.addEventListener('click', e => {
 export function renderProductDetails(product) {
   renderImages(product);
   renderInfo(product);
-  setupOrderButton(product); // привязываем кнопку заказа
+  setupOrderButton(product);
 }
 
 function renderImages(product) {
@@ -48,6 +48,15 @@ function renderImages(product) {
       ${rest.map(img => `<img src="${img}" alt="${product.name}" class="small-image-sofa" />`).join('')}
     </div>
   `;
+
+  // переключение по клику на маленькие картинки
+  const bigImage = galleryContainer.querySelector('.big-image-sofa');
+  const smallImages = galleryContainer.querySelectorAll('.small-image-sofa');
+  smallImages.forEach(img => {
+    img.addEventListener('click', () => {
+      bigImage.src = img.src;
+    });
+  });
 }
 
 function renderInfo(product) {
@@ -83,18 +92,14 @@ function setupOrderButton(product) {
   if (!orderBtn) return;
 
   orderBtn.addEventListener('click', () => {
-    // Получаем выбранный цвет в модалке товара
     const selectedColorInput = contentContainer.querySelector('input[name="color"]:checked');
     const selectedColor = selectedColorInput ? selectedColorInput.value : product.color[0];
 
-    // Закрываем модалку товара
     closeFurnitureModal();
 
-    // Открываем модалку заказа
     orderModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('body-no-scroll');
 
-    // Сохраняем productId и выбранный цвет в dataset формы
     orderForm.dataset.modelId = product._id;
     orderForm.dataset.color = selectedColor;
   });
@@ -107,7 +112,7 @@ orderModal?.addEventListener('click', e => {
 
 function closeOrderModal() {
   orderModal.style.display = 'none';
-  document.body.style.overflow = '';
+  document.body.classList.remove('body-no-scroll');
 }
 
 // ------------------- SUBMIT FORM -------------------
@@ -141,7 +146,6 @@ orderForm?.addEventListener('submit', async e => {
       { headers: { 'Content-Type': 'application/json' } }
     );
 
-    // Выводим ответ сервера в консоль
     console.log('Ответ сервера:', response.data);
 
     showSuccess('Заявка успішно надіслана!');
