@@ -22,6 +22,9 @@ const orderModal = document.querySelector('[data-order-modal]');
 const orderCloseBtn = document.querySelector('[data-order-modal-close]');
 const orderForm = document.querySelector('#orderForm');
 
+const submitBtn = document.querySelector('#submitOrderBtn');
+const orderLoader = document.querySelector('#orderLoader');
+
 // ------------------- BODY SCROLL CONTROL -------------------
 function disableBodyScroll() {
   document.body.classList.add('body-no-scroll');
@@ -43,6 +46,7 @@ export function closeFurnitureModal() {
 }
 
 furnitureCloseBtn?.addEventListener('click', closeFurnitureModal);
+
 furnitureModal?.addEventListener('click', e => {
   if (e.target === furnitureModal) closeFurnitureModal();
 });
@@ -62,12 +66,18 @@ function renderImages(product) {
   galleryContainer.innerHTML = `
     <img src="${first}" alt="${product.name}" class="big-image-sofa" />
     <div class="small-images">
-      ${rest.map(img => `<img src="${img}" alt="${product.name}" class="small-image-sofa" />`).join('')}
+      ${rest
+        .map(
+          img =>
+            `<img src="${img}" alt="${product.name}" class="small-image-sofa" />`
+        )
+        .join('')}
     </div>
   `;
 
   const bigImage = galleryContainer.querySelector('.big-image-sofa');
   const smallImages = galleryContainer.querySelectorAll('.small-image-sofa');
+
   smallImages.forEach(img => {
     img.addEventListener('click', () => {
       bigImage.src = img.src;
@@ -80,7 +90,10 @@ function renderInfo(product) {
     <h2 class="furniture-title">${product.name}</h2>
     <p class="modal-furniture-category">${product.category?.name || 'Меблі'}</p>
     <p class="modal-furniture-price">${product.price} грн</p>
-    <span class="modal-furniture-rate" data-rate="${product.rate}" style="--rating-percent: ${product.rate * 20}%"></span>
+    <span class="modal-furniture-rate" 
+      data-rate="${product.rate}" 
+      style="--rating-percent: ${product.rate * 20}%">
+    </span>
 
     <p class="furniture-color-text">Колір</p>
     <div class="colors-container">
@@ -88,7 +101,9 @@ function renderInfo(product) {
         .map(
           (c, i) => `
         <label class="color-option">
-          <input type="radio" name="color" value="${c}" ${i === 0 ? 'checked' : ''} />
+          <input type="radio" name="color" value="${c}" ${
+            i === 0 ? 'checked' : ''
+          } />
           <span class="color-swatch" style="background:${c}"></span>
         </label>
       `
@@ -114,6 +129,7 @@ function setupOrderButton(product) {
     const selectedColorInput = contentContainer.querySelector(
       'input[name="color"]:checked'
     );
+
     const selectedColor = selectedColorInput
       ? selectedColorInput.value
       : product.color[0];
@@ -129,6 +145,7 @@ function setupOrderButton(product) {
 }
 
 orderCloseBtn?.addEventListener('click', closeOrderModal);
+
 orderModal?.addEventListener('click', e => {
   if (e.target === orderModal) closeOrderModal();
 });
@@ -143,7 +160,9 @@ orderForm?.addEventListener('submit', async e => {
   e.preventDefault();
 
   const name = orderForm.querySelector('#orderName').value.trim();
-  const phone = orderForm.querySelector('#orderPhone').value.replace(/\D/g, '');
+  const phone = orderForm
+    .querySelector('#orderPhone')
+    .value.replace(/\D/g, '');
   const comment = orderForm.querySelector('#orderComment').value.trim();
   const modelId = orderForm.dataset.modelId;
   const color = orderForm.dataset.color;
@@ -158,8 +177,18 @@ orderForm?.addEventListener('submit', async e => {
     return;
   }
 
-  const payload = { name, phone, modelId, color, comment };
+  const payload = {
+    name,
+    phone,
+    modelId,
+    color,
+    ...(comment && { comment }),
+  };
+
   console.log('Payload для отправки на сервер:', payload);
+
+  submitBtn.style.display = 'none';
+  orderLoader.classList.remove('hidden');
 
   try {
     const response = await axios.post(
@@ -175,8 +204,12 @@ orderForm?.addEventListener('submit', async e => {
     closeOrderModal();
   } catch (err) {
     console.error('Ошибка при отправке заявки:', err.response?.data || err);
+
     showError(
       err.response?.data?.message || 'Сталася помилка при відправці заявки'
     );
+  } finally {
+    submitBtn.style.display = 'block';
+    orderLoader.classList.add('hidden');
   }
 });
