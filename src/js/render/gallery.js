@@ -30,11 +30,12 @@ async function fetchFurnitures(categoryId) {
 export async function initGallery() {
   if (!furnituresContainer) return console.error('Контейнер не знайдено!');
 
-  moreBtn.style.display = 'none'; // скрываем кнопку по умолчанию
+  moreBtn.style.display = 'none';
   await setCategory(undefined);
 
   if (moreBtn) {
     moreBtn.addEventListener('click', () => renderNext());
+    moreBtn.blur();
   }
 
   return { setCategory };
